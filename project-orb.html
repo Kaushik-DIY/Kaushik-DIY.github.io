@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PY-ORB Visual SLAM | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero-banner { background: linear-gradient(135deg, #134e5e 0%, #71b280 100%); padding: 4rem 0; color: white; }
+        .project-hero-banner h1 { font-size: 2.6rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.2; letter-spacing: -0.5px; }
+        .project-hero-banner .subtitle { font-size: 1.05rem; opacity: 0.88; margin-bottom: 1.8rem; }
+        .meta-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .meta-tag { background: rgba(255,255,255,0.15); color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.25); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: white; opacity: 0.8; text-decoration: none; font-weight: 600; font-size: 0.88rem; margin-bottom: 2rem; transition: opacity 0.2s; }
+        .back-link:hover { opacity: 1; }
+        .demo-block { background: white; padding: 2.5rem; border-radius: 12px; margin: 3rem 0 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .demo-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1.5rem; }
+        .demo-media { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .demo-caption { text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.88rem; font-style: italic; }
+        .content-block { background: white; padding: 2.5rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .content-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1rem; }
+        .content-block h3 { font-size: 1.05rem; font-weight: 700; color: #1a202c; margin: 1.5rem 0 0.6rem; }
+        .content-block p { font-size: 0.93rem; color: #475569; line-height: 1.8; margin-bottom: 0.75rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .tech-item { background: #f8fafc; padding: 1.1rem; border-radius: 6px; border-left: 4px solid #134e5e; }
+        .tech-item h4 { font-size: 0.88rem; font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; }
+        .tech-item p { font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.5; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+        .feature-list li::before { content: '→'; position: absolute; left: 0; color: #134e5e; font-weight: bold; }
+        .pipeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .pipeline-node { background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #71b280; padding: 1.2rem; border-radius: 6px; }
+        .pipeline-node .node-num { font-size: 0.65rem; font-weight: 700; color: #71b280; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.4rem; }
+        .pipeline-node .node-name { font-size: 0.92rem; font-weight: 700; color: #1a202c; margin-bottom: 0.4rem; }
+        .pipeline-node .node-desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
+        .results-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .result-value { font-size: 1.6rem; font-weight: 700; color: #134e5e; margin-bottom: 0.25rem; }
+        .result-label { font-size: 0.78rem; color: #64748b; font-weight: 500; }
+        .summary-img { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 1rem; }
+        .github-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #1a202c; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; }
+        .github-btn:hover { background: #2d3748; transform: translateY(-1px); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero-banner">
+        <div class="container">
+            <a href="projects.html" class="back-link">← Back to Projects</a>
+            <h1>ORB-SLAM2 Style Visual SLAM Pipeline in Python</h1>
+            <p class="subtitle">Full RGB-D visual SLAM with ORB features, DBoW3 loop detection, Sim3 verification, and g2o bundle adjustment - validated in real-time on a Jetson-powered mobile robot</p>
+            <div class="meta-bar">
+                <span class="meta-tag">Visual SLAM</span>
+                <span class="meta-tag">ORB Features</span>
+                <span class="meta-tag">DBoW3</span>
+                <span class="meta-tag">Bundle Adjustment</span>
+                <span class="meta-tag">RGB-D</span>
+                <span class="meta-tag">NVIDIA Jetson</span>
+                <span class="meta-tag">Python</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="demo-block">
+            <h2>Live Demo - Sparse Map Reconstruction</h2>
+            <img src="assets/projects/orb_slam.gif" alt="PY-ORB Visual SLAM Demo" class="demo-media">
+            <p class="demo-caption">Real-time ORB feature tracking (left) and progressive sparse 3D map point cloud growth (right) during the lab room run on the Jetpack AI Racer with Intel RealSense D4xx</p>
+        </div>
+    </section>
+
+    <section class="container">
+
+        <div class="content-block">
+            <h2>Overview</h2>
+            <p>A structured Python implementation of an ORB-SLAM2-style visual SLAM pipeline for RGB-D input. The system tracks camera pose frame-to-frame using ORB features, builds a sparse 3D map through local mapping and bundle adjustment, and detects and corrects loops using a DBoW3 vocabulary with Sim3 geometry verification and essential graph optimization. The TUM RGB-D benchmark is used to validate trajectory accuracy. The pipeline was further validated in real-time on a Jetpack AI Racer mobile robot powered by a NVIDIA Jetson board with an Intel RealSense D4xx RGB-D camera - demonstrating reliable operation on live sensor data in a physical lab environment.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Why This Problem</h2>
+            <p>ORB-SLAM2 is the foundational visual SLAM system that most modern methods build on or compare against. Its C++ codebase is correct and efficient but dense - making it difficult to understand individual design decisions, experiment with components in isolation, or adapt for research. This Python implementation rebuilds the full pipeline with clear module separation between feature extraction, tracking, local mapping, loop closing, and optimization. The goal is a system that produces correct trajectories on real data while being transparent enough that every architectural decision is visible and modifiable.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Technical Implementation</h2>
+            <h3>Pipeline Architecture</h3>
+            <div class="pipeline-grid">
+                <div class="pipeline-node">
+                    <div class="node-num">Stage 01</div>
+                    <div class="node-name">Feature Extraction and Tracking</div>
+                    <div class="node-desc">ORB features extracted per frame. Two backends: OpenCV ORB (portable) and bundled orbslam2-style extractor. Frame-to-frame tracking via ratio-test feature matching with motion model prediction. Relocalization on tracking failure.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Stage 02</div>
+                    <div class="node-name">Local Mapping and Keyframe Management</div>
+                    <div class="node-desc">New keyframes inserted when sufficient new map points are observed. Local mapping culls redundant keyframes, triangulates new 3D points from covisible keyframes, and runs local bundle adjustment via g2o.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Stage 03</div>
+                    <div class="node-name">DBoW3 Loop Detection</div>
+                    <div class="node-desc">Each keyframe encoded as a BoW vector using the bundled DBoW3 vocabulary. Candidates retrieved by vocabulary similarity and filtered by temporal consistency across multiple frames.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Stage 04</div>
+                    <div class="node-name">Sim3 Geometry Verification</div>
+                    <div class="node-desc">Loop candidates verified by computing Sim3 transformation using RANSAC and Horn's method. For RGB-D input, scale is fixed. Ensures geometric consistency before applying loop correction.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Stage 05</div>
+                    <div class="node-name">Essential Graph Optimization and Global BA</div>
+                    <div class="node-desc">After verified loop, essential graph (spanning tree plus loop and covisibility edges) optimized with g2o to propagate correction through the full map. Optional global BA refines all keyframe poses and map points.</div>
+                </div>
+            </div>
+
+            <h3>Real-Time Validation on Jetpack AI Racer</h3>
+            <p>The pipeline was deployed and validated in real-time on a Jetpack AI Racer mobile robot with an Intel RealSense D4xx RGB-D camera powered by a NVIDIA Jetson board. The lab room run demonstrates the system simultaneously tracking camera pose and building a sparse 3D feature map in a live physical environment - achieving zero tracking failures across the full run with 4 loop closure detections.</p>
+
+            <h3>Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-item"><h4>Python 3.11 / OpenCV</h4><p>Feature extraction, frame processing, ORB descriptor computation</p></div>
+                <div class="tech-item"><h4>g2o</h4><p>Local and global bundle adjustment, essential graph optimization</p></div>
+                <div class="tech-item"><h4>DBoW3 (pydbow3)</h4><p>Bag-of-Words loop candidate retrieval with ORBvoc vocabulary</p></div>
+                <div class="tech-item"><h4>Sim3 Solver</h4><p>RANSAC-based geometric loop verification with Horn's method</p></div>
+                <div class="tech-item"><h4>Intel RealSense D4xx</h4><p>RGB-D sensor providing synchronized color and depth for 3D initialization</p></div>
+                <div class="tech-item"><h4>NVIDIA Jetson</h4><p>Onboard compute on Jetpack AI Racer for real-time SLAM deployment</p></div>
+                <div class="tech-item"><h4>TUM RGB-D Benchmark</h4><p>Freiburg sequences used for quantitative trajectory evaluation</p></div>
+                <div class="tech-item"><h4>NumPy / SciPy</h4><p>Geometry utilities, rotation handling, evaluation tools</p></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>Real-Time Deployment Results</h2>
+            <div class="results-row">
+                <div class="result-card"><div class="result-value">4494</div><div class="result-label">Frames Processed</div></div>
+                <div class="result-card"><div class="result-value">0</div><div class="result-label">Tracking Failures</div></div>
+                <div class="result-card"><div class="result-value">47,060</div><div class="result-label">Final Map Points</div></div>
+                <div class="result-card"><div class="result-value">4</div><div class="result-label">Loop Closures Detected</div></div>
+                <div class="result-card"><div class="result-value">172</div><div class="result-label">Final Keyframes</div></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>Key Learnings</h2>
+            <p>The most technically demanding aspect was integrating the DBoW3 retrieval pipeline with the Sim3 geometric verifier in a way that correctly handles the consistency check across multiple frames before accepting a loop. A single high-similarity BoW match is insufficient - the candidate must appear consistently across consecutive keyframes and then pass geometric verification with enough inlier matches under RANSAC before the loop correction is applied.</p>
+            <p>Real-time deployment on the Jetson also surfaced the importance of the local mapping thread design. Running local mapping synchronously blocks the tracker and causes frame drops in tight spaces where many new map points need triangulation. Managing the threading model carefully was essential for stable real-time operation.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Applications</h2>
+            <ul class="feature-list">
+                <li>Visual navigation for mobile robots and drones using RGB-D cameras in GPS-denied environments</li>
+                <li>Indoor 3D sparse mapping without external positioning infrastructure</li>
+                <li>Research baseline for comparing feature-based and learning-based visual SLAM approaches</li>
+                <li>Modular platform for experimenting with alternative feature extractors, loop detectors, or optimization backends</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>Lab Run Analysis</h2>
+            <p>Full run statistics from the real lab deployment - sparse feature map, trajectory with keyframe graph, tracking quality, map growth, and bundle adjustment MSE over time.</p>
+            <img src="assets/projects/orb_summary.png" alt="PY-ORB Lab Run Summary" class="summary-img">
+            <p style="font-size:0.82rem; color:#94a3b8; margin-top:0.75rem; text-align:center;">Summary image to be added - upload orb_summary.png to assets/projects/</p>
+        </div>
+
+        <div class="content-block" style="text-align:center;">
+            <h2>Source Code</h2>
+            <p>Complete Python implementation with modular pipeline, evaluation tools, and deployment notes.</p>
+            <a href="https://github.com/Kaushik-DIY/PY-ORB" target="_blank" class="github-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on GitHub
+            </a>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color:#64748b;margin-top:0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top:1rem;"><a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a></div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

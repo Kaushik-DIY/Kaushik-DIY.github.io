@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Kaushik Mitra Venkat - Robotics Engineer specializing in perception systems and autonomous navigation">
+    <title>About | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-hero {
+            padding: 4rem 0 3rem 0;
+        }
+        
+        .about-intro {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+        
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+            object-fit: cover;
+        }
+        
+        .about-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a202c;
+        }
+        
+        .about-text .role {
+            font-size: 1.3rem;
+            color: #6366f1;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #6366f1;
+            border: 3px solid #F0F4F8;
+        }
+        
+        .timeline-period {
+            font-size: 0.85rem;
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-org {
+            font-size: 1rem;
+            color: #64748b;
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-desc {
+            color: #475569;
+            line-height: 1.7;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+        
+        .skill-item {
+            margin-bottom: 0.75rem;
+            color: #475569;
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .cert-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border-left: 4px solid #6366f1;
+        }
+        
+        .cert-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1a202c;
+        }
+        
+        .cert-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-intro {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-photo {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-hero container">
+        <div class="about-intro">
+            <img src="assets/images/photo-000.png" alt="Kaushik Mitra Venkat" class="about-photo">
+            <div class="about-text">
+                <h1>Kaushik Mitra Venkat</h1>
+                <div class="role">Robotics Engineer</div>
+                <p>
+                    Robotics Engineer specializing in perception systems, SLAM, and autonomous navigation for mobile robotics. Hands-on experience developing ROS/ROS2 pipelines integrating LiDAR, RGB-D cameras, IMU, and multi-sensor fusion for environment understanding.
+                </p>
+                <p>
+                    Built systems for object detection, point-cloud processing, EKF-based state estimation, and graph-based optimization. Proficient in Python, C++, OpenCV, PyTorch, and NVIDIA Jetson deployment. Currently pursuing a Master's in Mechatronics at University of Siegen, with focus on robotics perception, control systems, and machine learning for autonomous systems.
+                </p>
+                <p>
+                    <strong>Location:</strong> Siegen, Germany<br>
+                    <strong>Email:</strong> <a href="mailto:kaushikmitra.v@gmail.com" style="color: #6366f1;">kaushikmitra.v@gmail.com</a><br>
+                    <strong>Phone:</strong> +49 176 76507326
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Timeline -->
+    <section class="section container">
+        <div class="section-header">
+            <div class="section-label">Experience & Education</div>
+            <h2>Professional Journey</h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-period">Current</div>
+                <div class="timeline-title">Master's in Mechatronics</div>
+                <div class="timeline-org">University of Siegen, Germany</div>
+                <div class="timeline-desc">
+                    Focus: Robotics, Control Systems, Automation Technologies, Computer Vision, Machine Learning
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-period">Nov 2024 – Jan 2026</div>
+                <div class="timeline-title">Student Assistant</div>
+                <div class="timeline-org">Control and Robotics Laboratory, University of Siegen</div>
+                <div class="timeline-desc">
+                    Developed DJI Matrice 100 for mobile measurement platform, integrating RGB-D camera, LiDAR, IMU, and ultrasonic sensors. Implemented real-time computer vision using OpenCV for object detection and 3D measurement. Optimized performance using CUDA-enabled acceleration, achieving 0.3–0.5m measurement accuracy within 2–4m range under controlled conditions.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-period">May 2022 – Nov 2023</div>
+                <div class="timeline-title">Project Associate</div>
+                <div class="timeline-org">Indian Institute of Technology (IIT) Madras</div>
+                <div class="timeline-desc">
+                    Led TATA Steel-funded research project managing complete development cycle of laboratory-scale blast furnace prototype. Conducted structured experimental analysis achieving 35% improvement in combustion efficiency. Optimized material procurement and operational planning, reducing project expenditure by 20% while meeting all technical milestones.
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-period">Graduated Mar 2022</div>
+                <div class="timeline-title">Bachelor's in Mechanical Engineering</div>
+                <div class="timeline-org">SCSVMV University, India</div>
+                <div class="timeline-desc">
+                    Focus: Engineering Mechanics, Kinematics, Engineering Graphics and Design, Manufacturing Technologies, Programming (C & C++)
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section container">
+        <div class="section-header">
+            <div class="section-label">Technical Skills</div>
+            <h2>Expertise</h2>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Robotics & AI</h3>
+                <div class="skill-item">• Autonomous Systems</div>
+                <div class="skill-item">• Vision-Language-Action (VLA)</div>
+                <div class="skill-item">• Reinforcement Learning</div>
+                <div class="skill-item">• Multimodal Learning</div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Perception & Estimation</h3>
+                <div class="skill-item">• SLAM (Simultaneous Localization and Mapping)</div>
+                <div class="skill-item">• State Estimation (EKF, Particle Filters)</div>
+                <div class="skill-item">• Object Detection & Tracking</div>
+                <div class="skill-item">• Point-Cloud Processing</div>
+                <div class="skill-item">• 3D Perception & Scene Understanding</div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Libraries & Frameworks</h3>
+                <div class="skill-item">• OpenCV, PyTorch</div>
+                <div class="skill-item">• ROS / ROS2</div>
+                <div class="skill-item">• PCL (Point Cloud Library)</div>
+                <div class="skill-item">• Gazebo, RViz, MuJoCo</div>
+                <div class="skill-item">• Gymnasium, Stable-Baselines3</div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Programming & Tools</h3>
+                <div class="skill-item">• C / C++, Python, MATLAB</div>
+                <div class="skill-item">• NVIDIA Jetson, CUDA</div>
+                <div class="skill-item">• Linux, Git, Docker</div>
+                <div class="skill-item">• Jira (Project Management)</div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="skill-item">• English (C1 - Proficient)</div>
+                <div class="skill-item">• German (B1 - Intermediate)</div>
+                <div class="skill-item">• Tamil (Native)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="section container">
+        <div class="section-header">
+            <div class="section-label">Certifications</div>
+            <h2>Professional Development</h2>
+        </div>
+        
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>Deep Reinforcement Learning</h3>
+                <p>Hugging Face</p>
+            </div>
+            
+            <div class="cert-card">
+                <h3>Agile Project Management Professional Certificate</h3>
+                <p>Atlassian</p>
+            </div>
+            
+            <div class="cert-card">
+                <h3>Robotics</h3>
+                <p>NPTEL</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color: #64748b; margin-top: 0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top: 1rem;">
+                        <a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a>
+                        <a href="tel:+4917676507326">+49 176 76507326</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

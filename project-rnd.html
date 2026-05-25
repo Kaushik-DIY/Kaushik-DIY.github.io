@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RND Pyramids | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero-banner { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 4rem 0; color: white; }
+        .project-hero-banner h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.2; letter-spacing: -0.5px; }
+        .project-hero-banner .subtitle { font-size: 1.1rem; opacity: 0.92; margin-bottom: 1.8rem; }
+        .meta-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .meta-tag { background: rgba(255,255,255,0.2); color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); }
+        .demo-block { background: white; padding: 2.5rem; border-radius: 12px; margin: 3rem 0 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .demo-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1.5rem; }
+        .demo-media { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .demo-caption { text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.88rem; font-style: italic; }
+        .content-block { background: white; padding: 2.5rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .content-block h2 { font-size: 1.6rem; font-weight: 700; color: #1a202c; margin-bottom: 1rem; }
+        .content-block h3 { font-size: 1.1rem; font-weight: 700; color: #1a202c; margin: 1.5rem 0 0.75rem; }
+        .content-block p { font-size: 0.95rem; color: #475569; line-height: 1.8; margin-bottom: 0.75rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .tech-item { background: #f8fafc; padding: 1.1rem; border-radius: 6px; border-left: 4px solid #667eea; }
+        .tech-item h4 { font-size: 0.88rem; font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; }
+        .tech-item p { font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.5; }
+        .results-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .result-value { font-size: 1.8rem; font-weight: 700; color: #667eea; margin-bottom: 0.25rem; }
+        .result-label { font-size: 0.8rem; color: #64748b; font-weight: 500; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+        .feature-list li::before { content: '→'; position: absolute; left: 0; color: #667eea; font-weight: bold; }
+        .github-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #1a202c; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; }
+        .github-btn:hover { background: #2d3748; transform: translateY(-1px); }
+        .live-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #667eea; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; margin-left: 1rem; }
+        .live-btn:hover { background: #5a67d8; transform: translateY(-1px); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: white; opacity: 0.85; text-decoration: none; font-weight: 600; font-size: 0.88rem; margin-bottom: 2rem; transition: opacity 0.2s; }
+        .back-link:hover { opacity: 1; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero-banner">
+        <div class="container">
+            <a href="projects.html" class="back-link">← Back to Projects</a>
+            <h1>Curiosity-Driven Exploration with PPO and RND in Unity ML-Agents</h1>
+            <p class="subtitle">Training a sparse-reward agent to plan and execute a multi-step task using intrinsic motivation</p>
+            <div class="meta-bar">
+                <span class="meta-tag">PPO</span>
+                <span class="meta-tag">Random Network Distillation</span>
+                <span class="meta-tag">Unity ML-Agents</span>
+                <span class="meta-tag">Intrinsic Motivation</span>
+                <span class="meta-tag">Sparse Reward</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="demo-block">
+            <h2>Agent Demo</h2>
+            <img src="assets/projects/rl/rnd_pyramids.gif" alt="RND Pyramids Agent Demo" class="demo-media">
+            <p class="demo-caption">PPO + RND agent navigating the Pyramids environment - pressing the button to spawn the pyramid, knocking it over, and reaching the gold brick</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="content-block">
+            <h2>Overview</h2>
+            <p>Trained a PPO agent with Random Network Distillation to solve a multi-step manipulation task in Unity ML-Agents' Pyramids environment. The agent must discover and press a button to spawn a pyramid, navigate to it, and knock it over all from a sparse reward signal where standard PPO alone fails to explore effectively.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>The Problem - Why Standard PPO Is Not Enough</h2>
+            <p>The Pyramids task is a classic sparse-reward problem. The agent only receives meaningful reward at task completion, there is no dense reward shaping guiding it step by step. A standard PPO agent in this setting struggles to discover the correct sequence of actions through random exploration alone. It needs a reason to explore beyond what it already knows.</p>
+            <p>This is where intrinsic motivation changes the approach. Rather than waiting for the environment to reward correct behavior, the agent is also rewarded for encountering states it has not seen before, pushing it to actively investigate its environment instead of repeating familiar trajectories.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Technical Implementation</h2>
+            <h3>Algorithm: PPO with Random Network Distillation</h3>
+            <p>RND works by maintaining two neural networks with identical architectures. A randomly initialized target network (frozen, never updated) and a predictor network trained to match the target network's output. For any given state, the predictor error is high on unfamiliar states and low on familiar ones. This prediction error becomes the intrinsic reward, a direct signal for novelty.</p>
+            <p>The total reward combines extrinsic reward from the environment (task completion) and intrinsic reward from the RND prediction error (novelty signal), driving the agent to balance task execution with active environment exploration.</p>
+            <h3>Environment Details</h3>
+            <ul class="feature-list">
+                <li>Framework: Unity ML-Agents Toolkit</li>
+                <li>Observation space: 148 raycasts detecting objects (switch, bricks, golden brick, walls) + switch state boolean + agent velocity vector</li>
+                <li>Action space: 4 discrete actions (move forward, rotate left, rotate right, no-op)</li>
+                <li>Reward structure: sparse extrinsic + continuous intrinsic (RND prediction error)</li>
+            </ul>
+            <h3>Task Sequence the Agent Must Learn</h3>
+            <ul class="feature-list">
+                <li>Locate and press the button to spawn the pyramid</li>
+                <li>Navigate to the pyramid's location</li>
+                <li>Knock the pyramid over</li>
+                <li>Move to and collect the gold brick at the top</li>
+            </ul>
+            <p>No sub-task rewards are given. The agent must discover this entire sequence through exploration.</p>
+            <h3>Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-item"><h4>PPO</h4><p>On-policy policy gradient with clipped surrogate objective</p></div>
+                <div class="tech-item"><h4>Random Network Distillation</h4><p>Intrinsic curiosity via target-predictor network prediction error</p></div>
+                <div class="tech-item"><h4>Unity ML-Agents</h4><p>3D physics simulation environment and agent training toolkit</p></div>
+                <div class="tech-item"><h4>ONNX</h4><p>Model export format for deployment and browser playback</p></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>Results</h2>
+            <div class="results-row">
+                <div class="result-card"><div class="result-value">4</div><div class="result-label">Sequential Sub-Tasks Solved</div></div>
+                <div class="result-card"><div class="result-value">148</div><div class="result-label">Raycast Observations</div></div>
+            </div>
+            <ul class="feature-list">
+                <li>Agent successfully learned the full multi-step task sequence from sparse reward alone</li>
+                <li>RND exploration enabled the agent to discover the button-pyramid-gold sequence that random exploration would rarely find</li>
+                <li>Trained model exported to ONNX and playable live in-browser via Unity ML-Agents Spaces</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>Key Learnings</h2>
+            <p>The most important insight from this project is understanding the difference between dense and sparse reward environments, and why standard on-policy algorithms break down in the latter. RND offers an elegant solution. Rather than redesigning the reward function, it adds a self-supervised curiosity signal that emerges purely from the agent's own uncertainty about unseen states.</p>
+            <p>Understanding how the prediction error maps to genuine novelty, and how to balance intrinsic versus extrinsic reward scaling during training, was the core technical challenge of this project.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Real-World Relevance</h2>
+            <ul class="feature-list">
+                <li>Autonomous exploration of unknown environments where reward signals are sparse or hard to define</li>
+                <li>Task sequencing in robotic manipulation without dense reward shaping</li>
+                <li>Any scenario where an agent must discover structure in its environment before it can exploit it</li>
+            </ul>
+        </div>
+
+        <div class="content-block" style="text-align: center;">
+            <h2>Model and Live Demo</h2>
+            <p>Trained model and training metrics published on HuggingFace. Play the agent live in your browser via Unity ML-Agents Spaces.</p>
+            <p>Username: Kaushik23	;	Model ID: Kaushik23/RND-Pyramids<p>
+            <a href="https://huggingface.co/Kaushik23/RND-Pyramids" target="_blank" class="github-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                HuggingFace Model
+            </a>
+            <a href="https://huggingface.co/spaces/unity/ML-Agents-Pyramids" target="_blank" class="live-btn">Play Live in Browser</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color:#64748b;margin-top:0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top:1rem;">
+                        <a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

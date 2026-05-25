@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hector SLAM | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero-banner { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 4rem 0; color: white; }
+        .project-hero-banner h1 { font-size: 2.6rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.2; letter-spacing: -0.5px; }
+        .project-hero-banner .subtitle { font-size: 1.05rem; opacity: 0.88; margin-bottom: 1.8rem; }
+        .meta-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .meta-tag { background: rgba(255,255,255,0.15); color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.25); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: white; opacity: 0.8; text-decoration: none; font-weight: 600; font-size: 0.88rem; margin-bottom: 2rem; transition: opacity 0.2s; }
+        .back-link:hover { opacity: 1; }
+        .demo-block { background: white; padding: 2.5rem; border-radius: 12px; margin: 3rem 0 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .demo-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1.5rem; }
+        .demo-media { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .demo-caption { text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.88rem; font-style: italic; }
+        .content-block { background: white; padding: 2.5rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .content-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1rem; }
+        .content-block h3 { font-size: 1.05rem; font-weight: 700; color: #1a202c; margin: 1.5rem 0 0.6rem; }
+        .content-block p { font-size: 0.93rem; color: #475569; line-height: 1.8; margin-bottom: 0.75rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .tech-item { background: #f8fafc; padding: 1.1rem; border-radius: 6px; border-left: 4px solid #0f3460; }
+        .tech-item h4 { font-size: 0.88rem; font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; }
+        .tech-item p { font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.5; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+        .feature-list li::before { content: '→'; position: absolute; left: 0; color: #0f3460; font-weight: bold; }
+        .summary-img { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 1rem; }
+        .github-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #1a202c; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; }
+        .github-btn:hover { background: #2d3748; transform: translateY(-1px); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero-banner">
+        <div class="container">
+            <a href="projects.html" class="back-link">← Back to Projects</a>
+            <h1>Hector SLAM in Python with Pose-Graph Optimization</h1>
+            <p class="subtitle">Scan-to-map SLAM with multi-resolution Gauss-Newton matching and offline pose-graph optimization - validated in real-time on a Jetson-powered mobile robot</p>
+            <div class="meta-bar">
+                <span class="meta-tag">Hector SLAM</span>
+                <span class="meta-tag">Gauss-Newton</span>
+                <span class="meta-tag">Pose-Graph Optimization</span>
+                <span class="meta-tag">Occupancy Grid</span>
+                <span class="meta-tag">NVIDIA Jetson</span>
+                <span class="meta-tag">Real-Time</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="demo-block">
+            <h2>Live Demo - Lab Room Mapping</h2>
+            <img src="assets/projects/hector_slam.gif" alt="Hector SLAM Live Mapping Demo" class="demo-media">
+            <p class="demo-caption">Real-time occupancy grid map building on the Jetpack AI Racer - trajectory (left) and incremental scan integration (right) as the robot navigates the lab space</p>
+        </div>
+    </section>
+
+    <section class="container">
+
+        <div class="content-block">
+            <h2>Overview</h2>
+            <p>A Python implementation of Hector SLAM extended with pose-graph optimization. The system builds an occupancy grid map by iteratively matching 2D LiDAR scans against the current map using Gauss-Newton optimization across a multi-resolution pyramid - without requiring any wheel odometry. Evaluated on the Freiburg CARMEN benchmark and validated in real-time on a Jetpack AI Racer mobile robot powered by a NVIDIA Jetson board, confirming the implementation handles real sensor data and physical noise beyond offline datasets.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Why This Problem</h2>
+            <p>Hector SLAM is one of the most elegant formulations in 2D LiDAR SLAM. It requires no wheel odometry and operates purely on scan-to-map alignment. Building the pipeline directly in Python, rather than wrapping an existing ROS implementation, requires understanding every component in depth: how occupancy grids encode spatial belief, why multi-resolution pyramids are necessary for robust convergence, how the Gauss-Newton update is derived from the scan-alignment energy, and what happens to trajectory consistency when pose-graph optimization corrects accumulated drift over long runs.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Technical Implementation</h2>
+
+            <h3>Scan Matching Front-End</h3>
+            <p>Each incoming LiDAR scan is aligned to the current occupancy grid by minimizing E = sum(1 - M(p_i_world))^2, where M is the bilinearly-interpolated occupancy probability at each scan endpoint. The Gauss-Newton update requires the Jacobian of map occupancy with respect to pose [x, y, theta], computed analytically using spatial gradients of the probability grid. Levenberg-Marquardt damping stabilizes optimization when the Hessian approximation is poorly conditioned during fast rotation or low-overlap scans.</p>
+
+            <h3>Multi-Resolution Pyramid</h3>
+            <p>Scan matching runs coarse-to-fine across a pyramid of occupancy grids at decreasing resolutions. Coarse levels capture large initial pose uncertainty; fine levels refine alignment precisely. This prevents convergence to local minima during fast robot turns or in corridors where the scan provides weak rotational constraint.</p>
+
+            <h3>Occupancy Grid Update</h3>
+            <p>After each scan alignment, the map is updated via log-odds occupancy integration. Free cells along each ray are decremented and occupied cells at scan endpoints are incremented using Bresenham raycast - the same update rule as the original Hector SLAM formulation.</p>
+
+            <h3>Pose-Graph Optimization</h3>
+            <p>After the full trajectory is computed, relative pose constraints are loaded from the benchmark dataset. Pairs of poses within a configurable time threshold are connected as loop closure edges. The pose graph is then optimized using a sparse SciPy solver to minimize constraint violations across all edges - correcting accumulated drift and producing a globally consistent trajectory.</p>
+
+            <h3>Real-Time Validation on Jetpack AI Racer</h3>
+            <p>Beyond benchmark evaluation, the framework was deployed and validated in real-time on a Jetpack AI Racer mobile robot equipped with a 2D LiDAR and powered by a NVIDIA Jetson onboard computer. The lab room run shown in the demo demonstrates the system building an occupancy grid map live as the robot navigates the space, confirming that the implementation handles real sensor data, timing variability, and physical noise under real-world conditions.</p>
+
+            <h3>Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-item"><h4>Python / NumPy / SciPy</h4><p>Core implementation, Gauss-Newton solver, sparse PGO</p></div>
+                <div class="tech-item"><h4>Occupancy Grid Mapping</h4><p>Log-odds Bayesian update with Bresenham raycast</p></div>
+                <div class="tech-item"><h4>Multi-Res Pyramid</h4><p>Coarse-to-fine scan matching for robust convergence</p></div>
+                <div class="tech-item"><h4>NVIDIA Jetson</h4><p>Onboard compute for real-time deployment on Jetpack AI Racer</p></div>
+                <div class="tech-item"><h4>Carmen 2D LiDAR</h4><p>Sensor input for both benchmark and real-time runs</p></div>
+                <div class="tech-item"><h4>Freiburg CARMEN</h4><p>Benchmark dataset for quantitative PGO evaluation</p></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>Real-Time Deployment</h2>
+            <ul class="feature-list">
+                <li>Deployed on Jetpack AI Racer mobile robot with NVIDIA Jetson onboard computer</li>
+                <li>Real-time occupancy grid mapping from live 2D LiDAR data in the lab environment</li>
+                <li>Confirmed stable scan matching under physical noise and sensor timing variability</li>
+                <li>Zero odometry required throughout - pose estimated entirely from scan-to-map alignment</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>Key Learnings</h2>
+            <p>The most technically demanding aspect was deriving and implementing the Gauss-Newton Jacobian analytically - the gradient of bilinearly-interpolated occupancy probability with respect to SE(2) pose. This required careful handling of coordinate frame transforms between lidar, world, and grid coordinate systems, and understanding how interpolation errors propagate into the optimization update.</p>
+            <p>Deploying on the Jetson also revealed the gap between offline dataset replay and real-time operation. Scan timing, sensor noise characteristics, and the robot's physical dynamics all affect convergence in ways that are invisible when replaying recorded data at a controlled rate.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Applications</h2>
+            <ul class="feature-list">
+                <li>Mobile robots operating in GPS-denied indoor environments without wheel encoders</li>
+                <li>Lightweight 2D mapping for platforms where odometry is unreliable or unavailable</li>
+                <li>Foundation for understanding scan-matching SLAM before scaling to 3D systems</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>Lab Run Analysis</h2>
+            <p>Full run statistics and analysis from the real lab deployment - occupancy map, trajectory, scan-match quality, map growth, and per-scan motion profiles.</p>
+            <img src="assets/projects/hector_summary.png" alt="Hector SLAM Lab Run Summary" class="summary-img">
+        </div>
+
+        <div class="content-block" style="text-align:center;">
+            <h2>Source Code</h2>
+            <p>Complete Python implementation with reproducible execution pipeline and evaluation scripts.</p>
+            <a href="https://github.com/Kaushik-DIY/Hector_SLAM-PY" target="_blank" class="github-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on GitHub
+            </a>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color:#64748b;margin-top:0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top:1rem;"><a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a></div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

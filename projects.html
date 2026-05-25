@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 4rem 0; color: white; text-align: center; }
+        .page-hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.2rem; opacity: 0.95; }
+        .filter-bar { background: white; padding: 1.5rem; border-radius: 12px; margin: 2rem 0 1rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        .filter-btn { padding: 0.75rem 1.5rem; border: 2px solid #e2e8f0; background: white; color: #64748b; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-family: inherit; font-size: 0.95rem; }
+        .filter-btn:hover, .filter-btn.active { border-color: #6366f1; color: #6366f1; background: #f8fafc; }
+        .subsection-header { margin: 3rem 0 1.5rem; }
+        .subsection-title { font-size: 1.6rem; font-weight: 700; color: #1a202c; margin-bottom: 0.25rem; }
+        .subsection-desc { color: #64748b; font-size: 0.95rem; }
+        .subsection-divider { border: none; border-top: 2px solid #e2e8f0; margin: 3rem 0; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>All Projects</h1>
+            <p>Robotics perception, autonomous navigation, and reinforcement learning systems</p>
+        </div>
+    </section>
+
+    <section class="section container">
+
+        <!-- Filter -->
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('rl', this)">Reinforcement Learning</button>
+        </div>
+
+        <!-- Main Projects -->
+        <div class="subsection-header" data-section="main">
+            <div class="subsection-title">Robotics & Perception Projects</div>
+            <div class="subsection-desc">End-to-end systems built on ROS2, sensor fusion, and autonomous navigation</div>
+        </div>
+
+        <div class="projects-list" id="main-projects">
+
+            <div class="project-card" data-category="main">
+                <div class="project-visual">
+                    <img src="assets/projects/pi05_poster.jpg"
+                         data-gif="assets/projects/pi05_demo_preview.gif"
+                         data-poster="assets/projects/pi05_poster.jpg"
+                         alt="Language-Conditioned Robotic Manipulation"
+                         class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Language-Conditioned Robotic Manipulation</div>
+                    <div class="project-impact">Type a command, watch the robot execute it. A terminal-driven VLA interface using Pi0.5 and LIBERO - end-to-end from natural language to simulated robot action.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">Pi0.5 · LeRobot · MuJoCo</div></div>
+                        <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">VLA · Simulation</div></div>
+                    </div>
+                    <a href="project-pi05.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="main" id="tracking">
+                <div class="project-visual">
+                    <img src="assets/projects/mot_poster.jpg"
+                         data-gif="assets/projects/mot_demo.gif"
+                         data-poster="assets/projects/mot_poster.jpg"
+                         alt="Multi-Object 3D Perception and Tracking"
+                         class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Multi-Object 3D Perception & Tracking</div>
+                    <div class="project-impact">Every moving object detected, located in 3D space, and tracked across frames. A full ROS2 perception stack fusing camera and LiDAR, validated against nuScenes ground truth at 0.3m median spatial error.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">ROS2 · YOLOv8 · Kalman</div></div>
+                        <div class="meta-item"><div class="meta-label">Result</div><div class="meta-value">0.3m accuracy</div></div>
+                    </div>
+                    <a href="project-mot.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="main">
+                <div class="project-visual">
+                    <img src="assets/projects/orb_slam_poster.jpg"
+                         data-gif="assets/projects/orb_slam.gif"
+                         data-poster="assets/projects/orb_slam_poster.jpg"
+                         alt="PY-ORB Visual SLAM"
+                         class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">ORB-SLAM2 Style Visual SLAM Pipeline</div>
+                    <div class="project-impact">Full RGB-D visual SLAM built in Python - ORB tracking, local mapping, DBoW3 loop detection, Sim3 verification, and g2o bundle adjustment. Validated in real-time on a Jetson-powered mobile robot with zero tracking failures across 4494 frames.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">ORB · DBoW3 · g2o</div></div>
+                        <div class="meta-item"><div class="meta-label">Platform</div><div class="meta-value">Jetson · RealSense</div></div>
+                    </div>
+                    <a href="project-orb.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="main">
+                <div class="project-visual">
+                    <img src="assets/projects/hector_slam_poster.jpg"
+                         data-gif="assets/projects/hector_slam.gif"
+                         data-poster="assets/projects/hector_slam_poster.jpg"
+                         alt="Hector SLAM"
+                         class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Hector SLAM in Python with Pose-Graph Optimization</div>
+                    <div class="project-impact">Scan-to-map SLAM with multi-resolution Gauss-Newton matching and offline pose-graph optimization. No odometry required. Validated in real-time on a Jetson-powered mobile robot beyond benchmark datasets.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">Python · NumPy · SciPy</div></div>
+                        <div class="meta-item"><div class="meta-label">Platform</div><div class="meta-value">Jetson · 2D LiDAR</div></div>
+                    </div>
+                    <a href="project-hector.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RL Divider -->
+        <hr class="subsection-divider" data-section="rl-divider">
+
+        <!-- RL Subsection -->
+        <div class="subsection-header" data-section="rl-header">
+            <div class="subsection-title">Reinforcement Learning</div>
+            <div class="subsection-desc">Agents trained across tabular, policy gradient, and deep RL methods - from discrete planning to visual control</div>
+        </div>
+
+        <div class="projects-list" id="rl-projects">
+
+            <div class="project-card" data-category="rl">
+                <div class="project-visual">
+                    <img src="assets/projects/rl/rnd_pyramids_poster.jpg"
+                         data-gif="assets/projects/rl/rnd_pyramids.gif"
+                         data-poster="assets/projects/rl/rnd_pyramids_poster.jpg"
+                         alt="RND Pyramids" class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Curiosity-Driven Exploration - RND Pyramids</div>
+                    <div class="project-impact">Sparse rewards. No hand-holding. PPO with Random Network Distillation drives the agent to explore, plan, and execute a multi-step manipulation task through intrinsic curiosity.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Algorithm</div><div class="meta-value">PPO + RND</div></div>
+                        <div class="meta-item"><div class="meta-label">Framework</div><div class="meta-value">Unity ML-Agents</div></div>
+                    </div>
+                    <a href="project-rnd.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="rl">
+                <div class="project-visual">
+                    <img src="assets/projects/rl/vizdoom_poster.jpg"
+                         data-gif="assets/projects/rl/vizdoom.gif"
+                         data-poster="assets/projects/rl/vizdoom_poster.jpg"
+                         alt="VizDoom Health Gathering" class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Survival Under Pressure - VizDoom Health Gathering</div>
+                    <div class="project-impact">First-person 3D survival agent trained with APPO - learning to navigate, identify, and collect health packs from raw pixel input to stay alive indefinitely.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Algorithm</div><div class="meta-value">APPO</div></div>
+                        <div class="meta-item"><div class="meta-label">Reward</div><div class="meta-value">10.91 mean</div></div>
+                    </div>
+                    <a href="project-vizdoom.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="rl">
+                <div class="project-visual">
+                    <img src="assets/projects/rl/lunar_lander_poster.jpg"
+                         data-gif="assets/projects/rl/lunar_lander.gif"
+                         data-poster="assets/projects/rl/lunar_lander_poster.jpg"
+                         alt="LunarLander" class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Precision Landing - LunarLander-v2</div>
+                    <div class="project-impact">PPO agent mastering spacecraft descent - learning to throttle three engines precisely to land between two flags without crashing or wasting fuel.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Algorithm</div><div class="meta-value">PPO (CleanRL)</div></div>
+                        <div class="meta-item"><div class="meta-label">Reward</div><div class="meta-value">116.31 mean</div></div>
+                    </div>
+                    <a href="project-lunarlander.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="rl">
+                <div class="project-visual">
+                    <img src="assets/projects/rl/taxi_poster.jpg"
+                         data-gif="assets/projects/rl/taxi.gif"
+                         data-poster="assets/projects/rl/taxi_poster.jpg"
+                         alt="Taxi Q-Learning" class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Tabular Q-Learning - Taxi-v3</div>
+                    <div class="project-impact">Q-Learning implemented from scratch - the Bellman equation in action. Agent learns optimal pickup and delivery sequences across a 500-state discrete grid through pure value iteration.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Algorithm</div><div class="meta-value">Q-Learning</div></div>
+                        <div class="meta-item"><div class="meta-label">States</div><div class="meta-value">500 discrete</div></div>
+                    </div>
+                    <a href="project-taxi.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="rl">
+                <div class="project-visual">
+                    <img src="assets/projects/rl/pixel_copter_poster.jpg"
+                         data-gif="assets/projects/rl/pixel_copter.gif"
+                         data-poster="assets/projects/rl/pixel_copter_poster.jpg"
+                         alt="Pixelcopter" class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Visual Policy Gradient - Pixelcopter</div>
+                    <div class="project-impact">REINFORCE from scratch on raw pixel input - no features, no hand-crafting. The agent learns thrust control through pure policy gradient, directly demonstrating why variance reduction matters in visual RL.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Algorithm</div><div class="meta-value">REINFORCE</div></div>
+                        <div class="meta-item"><div class="meta-label">Input</div><div class="meta-value">Raw pixels</div></div>
+                    </div>
+                    <a href="project-pixelcopter.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color:#64748b;margin-top:0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top:1rem;">
+                        <a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a>
+                        <a href="tel:+4917676507326">+49 176 76507326</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        function filterProjects(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const mainSection = document.querySelector('[data-section="main"]');
+            const rlHeader = document.querySelector('[data-section="rl-header"]');
+            const rlDivider = document.querySelector('[data-section="rl-divider"]');
+            const mainCards = document.getElementById('main-projects');
+            const rlCards = document.getElementById('rl-projects');
+
+            if (category === 'all') {
+                mainSection.style.display = '';
+                mainCards.style.display = '';
+                rlHeader.style.display = '';
+                rlDivider.style.display = '';
+                rlCards.style.display = '';
+            } else if (category === 'rl') {
+                mainSection.style.display = 'none';
+                mainCards.style.display = 'none';
+                rlDivider.style.display = 'none';
+                rlHeader.style.display = '';
+                rlCards.style.display = '';
+            }
+        }
+
+        // GIF hover-play
+        document.querySelectorAll('.gif-thumb').forEach(img => {
+            const gifSrc = img.getAttribute('data-gif');
+            const posterSrc = img.getAttribute('data-poster');
+            img.src = posterSrc;
+            img.closest('.project-card').addEventListener('mouseenter', () => { img.src = gifSrc; });
+            img.closest('.project-card').addEventListener('mouseleave', () => { img.src = posterSrc; });
+        });
+    </script>
+</body>
+</html>

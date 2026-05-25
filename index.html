@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kaushik Mitra Venkat - Robotics Engineer specializing in perception systems, SLAM, and autonomous navigation">
+    <title>Kaushik Mitra Venkat - Robotics Engineer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text-only">
+                <div class="hero-greeting">Hello, I'm Kaushik</div>
+                <div class="hero-mission">I build <span class="highlight">autonomous systems</span> that understand, adapt, and act with purpose</div>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn-primary">View My Work</a>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank" class="contact-link">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank" class="contact-link">GitHub</a>
+                        <a href="mailto:kaushikmitra.v@gmail.com" class="contact-link">Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Robotics -->
+    <section class="container">
+        <div class="why-robotics-full">
+            <div class="why-robotics-label">Why Robotics?</div>
+            <p>I see robotics as the convergence of perception, intelligence, and action in conditions that are unpredictable, critical, or too dangerous for a person. That's where autonomous systems go beyond assistance and make an impact. To me, that's not just engineering. That's the purpose.</p>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="section container" id="projects">
+        <div class="section-header">
+            <div class="section-label">Featured Work</div>
+            <h2>Selected Projects</h2>
+        </div>
+        <div class="projects-list">
+
+            <div class="project-card">
+                <div class="project-visual">
+                    <img src="assets/projects/pi05_poster.jpg"
+                         data-gif="assets/projects/pi05_demo_preview.gif"
+                         data-poster="assets/projects/pi05_poster.jpg"
+                         alt="Language-Conditioned Robotic Manipulation"
+                         class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Language-Conditioned Robotic Manipulation</div>
+                    <div class="project-impact">Type a command, watch the robot execute it. A terminal-driven VLA interface using Pi0.5 and LIBERO - end-to-end from natural language to simulated robot action.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">Pi0.5 · LeRobot · MuJoCo</div></div>
+                        <div class="meta-item"><div class="meta-label">Type</div><div class="meta-value">VLA · Simulation</div></div>
+                    </div>
+                    <a href="project-pi05.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-visual">
+                    <img src="assets/projects/mot_poster.jpg"
+                         data-gif="assets/projects/mot_demo.gif"
+                         data-poster="assets/projects/mot_poster.jpg"
+                         alt="Multi-Object 3D Perception and Tracking"
+                         class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Multi-Object 3D Perception & Tracking</div>
+                    <div class="project-impact">Every moving object detected, located in 3D space, and tracked across frames. A full ROS2 perception stack fusing camera and LiDAR, validated against nuScenes ground truth at 0.3m median spatial error.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">ROS2 · YOLOv8 · Kalman</div></div>
+                        <div class="meta-item"><div class="meta-label">Result</div><div class="meta-value">0.3m accuracy</div></div>
+                    </div>
+                    <a href="project-mot.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-visual">
+                    <img src="assets/projects/orb_slam_poster.jpg"
+                         data-gif="assets/projects/orb_slam.gif"
+                         data-poster="assets/projects/orb_slam_poster.jpg"
+                         alt="PY-ORB Visual SLAM"
+                         class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">ORB-SLAM2 Style Visual SLAM Pipeline</div>
+                    <div class="project-impact">Full RGB-D visual SLAM built in Python - ORB tracking, local mapping, DBoW3 loop detection, Sim3 verification, and g2o bundle adjustment. Validated in real-time on a Jetson-powered mobile robot with zero tracking failures across 4494 frames.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">ORB · DBoW3 · g2o</div></div>
+                        <div class="meta-item"><div class="meta-label">Platform</div><div class="meta-value">Jetson · RealSense</div></div>
+                    </div>
+                    <a href="project-orb.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-visual">
+                    <img src="assets/projects/hector_slam_poster.jpg"
+                         data-gif="assets/projects/hector_slam.gif"
+                         data-poster="assets/projects/hector_slam_poster.jpg"
+                         alt="Hector SLAM"
+                         class="gif-thumb">
+                </div>
+                <div class="project-details">
+                    <div class="project-title">Hector SLAM in Python with Pose-Graph Optimization</div>
+                    <div class="project-impact">Scan-to-map SLAM with multi-resolution Gauss-Newton matching and offline pose-graph optimization. No odometry required. Validated in real-time on a Jetson-powered mobile robot beyond benchmark datasets.</div>
+                    <div class="project-meta">
+                        <div class="meta-item"><div class="meta-label">Stack</div><div class="meta-value">Python · NumPy · SciPy</div></div>
+                        <div class="meta-item"><div class="meta-label">Platform</div><div class="meta-value">Jetson · 2D LiDAR</div></div>
+                    </div>
+                    <a href="project-hector.html" class="project-link">View full project</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color: #64748b; margin-top: 0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top: 1rem;">
+                        <a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a>
+                        <a href="tel:+4917676507326">+49 176 76507326</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // GIF hover-play - reliable poster/gif swap method
+        document.querySelectorAll('.gif-thumb').forEach(img => {
+            const gifSrc   = img.getAttribute('data-gif');
+            const posterSrc = img.getAttribute('data-poster');
+
+            // Ensure we start with poster (static)
+            img.src = posterSrc;
+
+            img.closest('.project-card').addEventListener('mouseenter', () => {
+                img.src = gifSrc;
+            });
+
+            img.closest('.project-card').addEventListener('mouseleave', () => {
+                img.src = posterSrc;
+            });
+        });
+    </script>
+</body>
+</html>

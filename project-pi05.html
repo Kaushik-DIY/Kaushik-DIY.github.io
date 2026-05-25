@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Language-Conditioned Robotic Manipulation using Pi0.5 VLA - Terminal-driven interface for natural language robotic control">
+    <title>Language-Conditioned Robotic Manipulation | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .project-hero .project-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+        
+        .project-meta-bar {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            margin: 3rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        
+        .demo-video {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        
+        .content-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+        }
+        
+        .content-section h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            color: #1a202c;
+        }
+        
+        .content-section p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-item {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #6366f1;
+        }
+        
+        .tech-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1a202c;
+        }
+        
+        .tech-item p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 0;
+        }
+        
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #1a202c;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 2rem;
+        }
+        
+        .github-link:hover {
+            background: #6366f1;
+            transform: translateY(-2px);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .back-link:hover {
+            gap: 0.75rem;
+        }
+        
+        ul.feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        ul.feature-list li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            color: #475569;
+        }
+        
+        ul.feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #6366f1;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <a href="index.html#projects" class="back-link" style="color: white; opacity: 0.9;">← Back to Projects</a>
+            <h1>Language-Conditioned Robotic Manipulation using Pi0.5 VLA</h1>
+            <p class="project-subtitle">Terminal-driven interface for natural language robotic control in simulation</p>
+            <div class="project-meta-bar">
+                <span class="meta-badge">Pi0.5 • LeRobot • MuJoCo</span>
+                <span class="meta-badge">Vision-Language-Action Model</span>
+                <span class="meta-badge">Personal Exploration</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="container">
+        <div class="demo-section">
+            <h2 style="margin-bottom: 1.5rem; color: #1a202c;">Project Demo</h2>
+            <video class="demo-video" controls autoplay loop muted>
+                <source src="assets/projects/pi05_libero_10_task9.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p style="text-align: center; margin-top: 1rem; color: #64748b; font-style: italic;">
+                Demo: "Put the yellow and white mug in the microwave and close it" - executed in MuJoCo simulation
+            </p>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="container">
+        <!-- Overview -->
+        <div class="content-section">
+            <h2>Project Overview</h2>
+            <p>
+                This project demonstrates a terminal-driven Vision-Language-Action (VLA) robotic manipulation workflow using a LIBERO-finetuned Pi0.5 policy through LeRobot. The system accepts natural-language commands (e.g., "put the yellow and white mug in the microwave and close it"), searches the LIBERO task registry, matches the command to the appropriate manipulation task, and executes it using a Pi0.5 policy in MuJoCo simulation with a Franka Panda arm.
+            </p>
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="content-section">
+            <h2>Problem Statement</h2>
+            <p>
+                Vision-Language-Action models represent a significant advancement in robotic manipulation by enabling robots to understand natural language instructions and execute corresponding physical actions. However, understanding how these models integrate vision, language, and learned policies across the full pipeline from task grounding and multimodal input processing to policy inference and simulation execution - requires hands-on exploration.
+            </p>
+            <p>
+                This project addresses the challenge of building an end-to-end system that demonstrates the practical integration of VLA models for language-conditioned robotic manipulation in a benchmark environment.
+            </p>
+        </div>
+
+        <!-- My Role -->
+        <div class="content-section">
+            <h2>My Role & Approach</h2>
+            <p>
+                This was a personal exploration project undertaken to understand VLA architecture and how natural-language prompts synchronize with task execution in Physical AI systems. I designed and implemented the complete pipeline from command input to simulated robot execution.
+            </p>
+            <h3>Key Contributions:</h3>
+            <ul class="feature-list">
+                <li>Built terminal-driven interface for natural language command input</li>
+                <li>Implemented LIBERO task registry search and command-to-task matching</li>
+                <li>Integrated Pi0.5 LIBERO-finetuned policy via LeRobot</li>
+                <li>Configured MuJoCo simulation environment with Franka Panda arm</li>
+                <li>Developed rollout video generation pipeline</li>
+                <li>Tested flexible natural-language prompts to evaluate policy understanding</li>
+            </ul>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="content-section">
+            <h2>Technical Implementation</h2>
+            
+            <h3>Core Pipeline Architecture</h3>
+            <p>The system implements a closed-loop Vision-Language-Action policy execution pipeline:</p>
+            <ol style="color: #475569; line-height: 1.8;">
+                <li>User enters natural-language command via terminal interface</li>
+                <li>System performs task registry lookup in LIBERO benchmark suite</li>
+                <li>Instruction is mapped to corresponding LIBERO suite + task ID</li>
+                <li>LIBERO initializes MuJoCo/robosuite scene with appropriate objects</li>
+                <li>LeRobot loads Pi0.5 LIBERO-finetuned policy checkpoint</li>
+                <li>Camera observations + robot state + language task are processed by Pi0.5</li>
+                <li>Policy predicts robot actions frame-by-frame</li>
+                <li>Robot executes manipulation task in simulation</li>
+                <li>Complete rollout is saved as video for analysis</li>
+            </ol>
+
+            <h3>Technology Stack</h3>
+            <div class="tech-stack-grid">
+                <div class="tech-item">
+                    <h4>Pi0.5 VLA Model</h4>
+                    <p>LIBERO-finetuned vision-language-action policy for robotic manipulation</p>
+                </div>
+                <div class="tech-item">
+                    <h4>LeRobot Framework</h4>
+                    <p>Policy loading, inference management, and robot control abstraction</p>
+                </div>
+                <div class="tech-item">
+                    <h4>LIBERO Benchmark</h4>
+                    <p>Task registry and standardized manipulation scenarios</p>
+                </div>
+                <div class="tech-item">
+                    <h4>MuJoCo Physics</h4>
+                    <p>High-fidelity physics simulation for robot dynamics</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Robosuite</h4>
+                    <p>Scene initialization and object placement</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Python</h4>
+                    <p>Core implementation language for pipeline integration</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="content-section">
+            <h2>Results & Outcomes</h2>
+            <p>
+                The system successfully demonstrated end-to-end language-conditioned robotic manipulation in simulation. The Pi0.5 policy correctly interpreted natural language commands and generated appropriate action sequences to complete tasks in the LIBERO benchmark.
+            </p>
+            <h3>Key Achievements:</h3>
+            <ul class="feature-list">
+                <li>Successfully executed language-conditioned manipulation tasks across multiple LIBERO scenarios</li>
+                <li>Validated flexible natural-language prompt understanding by testing variations of task descriptions</li>
+                <li>Demonstrated complete pipeline from command input to simulated robot action</li>
+                <li>Created reproducible workflow on Kaggle GPU infrastructure</li>
+                <li>Documented full architecture, setup notes, and pipeline design for future reference</li>
+            </ul>
+        </div>
+
+        <!-- Learning & Insights -->
+        <div class="content-section">
+            <h2>Challenges & Learning</h2>
+            <h3>Technical Challenges:</h3>
+            <ul class="feature-list">
+                <li>Understanding VLA model architecture and multimodal input processing requirements</li>
+                <li>Configuring Kaggle GPU environment for MuJoCo and robosuite dependencies</li>
+                <li>Implementing robust task-to-command matching logic</li>
+                <li>Managing inference latency for real-time policy rollouts</li>
+            </ul>
+            
+            <h3>Key Learnings:</h3>
+            <p>
+                This project provided deep insights into how vision, language, and learned policies integrate in working robotic systems. I learned that VLA models are not just about the model architecture itself, but about the entire ecosystem of task grounding, multimodal input processing, policy inference, and simulation execution that must work together seamlessly.
+            </p>
+            <p>
+                The experience reinforced my understanding of Physical AI as the convergence of perception, intelligence, and action where systems can understand natural language instructions, perceive their environment through vision, and execute purposeful physical actions.
+            </p>
+        </div>
+
+        <!-- Applications -->
+        <div class="content-section">
+            <h2>Real-World Applications</h2>
+            <p>
+                Vision-Language-Action models enable robots to understand environments and perform tasks based on natural language commands, making them highly applicable to:
+            </p>
+            <ul class="feature-list">
+                <li>Adaptive robotic systems in manufacturing that can be reprogrammed through natural language</li>
+                <li>Service robotics in homes and hospitals where non-expert users need intuitive control</li>
+                <li>Human-robot collaboration scenarios requiring flexible task specification</li>
+                <li>Warehouse automation with dynamic task assignment via voice or text commands</li>
+                <li>Research platforms for studying language grounding in physical systems</li>
+            </ul>
+        </div>
+
+        <!-- GitHub Link -->
+        <div class="content-section" style="text-align: center;">
+            <h2>View Source Code & Documentation</h2>
+            <p>Complete code, Kaggle workflow, setup notes, and architecture documentation available on GitHub.</p>
+            <a href="https://github.com/Kaushik-DIY/Pi0.5-VLA-Manipulation" target="_blank" class="github-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color: #64748b; margin-top: 0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top: 1rem;">
+                        <a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a>
+                        <a href="tel:+4917676507326">+49 176 76507326</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Multi-Object 3D Perception and Tracking System - ROS2, YOLOv8, Camera-LiDAR Fusion, Kalman Filter">
+    <title>Multi-Object 3D Perception & Tracking | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero-banner {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .project-hero-banner h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        .project-hero-banner .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.92;
+            margin-bottom: 1.8rem;
+        }
+
+        .meta-bar {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .demo-block {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 3rem 0 2rem 0;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .demo-block h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+        }
+
+        .demo-media {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .demo-caption {
+            text-align: center;
+            margin-top: 1rem;
+            color: #64748b;
+            font-size: 0.88rem;
+            font-style: italic;
+        }
+
+        .content-block {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .content-block h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+
+        .content-block h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .content-block p {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .pipeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .pipeline-node {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #4facfe;
+            padding: 1.2rem;
+            border-radius: 6px;
+        }
+
+        .pipeline-node .node-num {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: #4facfe;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .pipeline-node .node-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.4rem;
+        }
+
+        .pipeline-node .node-desc {
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tech-item {
+            background: #f8fafc;
+            padding: 1.1rem;
+            border-radius: 6px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .tech-item h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.3rem;
+        }
+
+        .tech-item p {
+            font-size: 0.78rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .results-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .result-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4facfe;
+            margin-bottom: 0.25rem;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.4rem 0 0.4rem 1.4rem;
+            position: relative;
+            font-size: 0.92rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #4facfe;
+            font-weight: bold;
+        }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #1a202c;
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.25s;
+            margin-top: 1rem;
+        }
+
+        .github-btn:hover {
+            background: #2d3748;
+            transform: translateY(-1px);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: white;
+            opacity: 0.85;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+            margin-bottom: 2rem;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover { opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero-banner">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">← Back to Projects</a>
+            <h1>Multi-Object 3D Perception & Tracking System</h1>
+            <p class="subtitle">End-to-end ROS2 perception pipeline - YOLO detection, Camera-LiDAR fusion, Kalman tracking</p>
+            <div class="meta-bar">
+                <span class="meta-tag">ROS2 Humble</span>
+                <span class="meta-tag">YOLOv8</span>
+                <span class="meta-tag">Camera-LiDAR Fusion</span>
+                <span class="meta-tag">Kalman Filter</span>
+                <span class="meta-tag">nuScenes Dataset</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="container">
+        <div class="demo-block">
+            <h2>Live Demo</h2>
+            <img src="assets/projects/mot_demo.gif"
+                 alt="Multi-Object 3D Perception and Tracking Demo"
+                 class="demo-media">
+            <p class="demo-caption">
+                ROS2 pipeline output: YOLO bounding boxes with real-world distance estimates from Camera-LiDAR fusion, tracked across frames on nuScenes data
+            </p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="container">
+
+        <!-- Overview -->
+        <div class="content-block">
+            <h2>Project Overview</h2>
+            <p>
+                Built a complete multi-object perception and tracking pipeline in ROS2, integrating YOLO-based 2D detection with camera-LiDAR sensor fusion to localize and track multiple objects in 3D space. Each detected object gets a persistent track ID, a real-world distance estimate, and a velocity vector - all validated against the nuScenes autonomous driving benchmark dataset.
+            </p>
+            <p>
+                The system runs as five coordinated ROS2 nodes across five terminals, handling the full pipeline from raw sensor data to temporally consistent 3D object tracks visualized in RViz2.
+            </p>
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="content-block">
+            <h2>Problem Statement</h2>
+            <p>
+                In autonomous navigation, detecting what is around you is only the first step. A robot or vehicle needs to know where each object is in 3D space, how far away it is, and whether it is the same object it saw a moment ago. This requires combining the strengths of camera-based detection (rich visual features) with LiDAR-based depth (precise spatial measurements) - and then maintaining consistent object identities over time despite sensor noise and occlusions.
+            </p>
+            <p>
+                This project addresses that full perception-to-tracking pipeline, from raw nuScenes sensor streams through detection, fusion, ego-motion compensation, and temporally consistent multi-object tracking.
+            </p>
+        </div>
+
+        <!-- Pipeline -->
+        <div class="content-block">
+            <h2>Technical Implementation</h2>
+            <h3>5-Node ROS2 Pipeline Architecture</h3>
+            <div class="pipeline-grid">
+                <div class="pipeline-node">
+                    <div class="node-num">Node 01</div>
+                    <div class="node-name">nuScenes Player</div>
+                    <div class="node-desc">Streams synchronized camera images and LiDAR point clouds from nuScenes mini dataset as ROS2 topics at 2Hz</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Node 02</div>
+                    <div class="node-name">YOLO Detector</div>
+                    <div class="node-desc">YOLOv8n detects objects in each camera frame at 8fps, publishing 2D bounding boxes and overlay images</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Node 03</div>
+                    <div class="node-name">Camera-LiDAR Fusion</div>
+                    <div class="node-desc">Projects LiDAR points into the camera frame using calibration transforms, associates points with YOLO bounding boxes, computes 3D centroids and metric distances with ego-motion compensation</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Node 04</div>
+                    <div class="node-name">MOT Tracker</div>
+                    <div class="node-desc">Constant-velocity Kalman filter with Hungarian algorithm for data association. Maintains persistent track IDs with gating at 6m, confirms tracks after 2 hits, prunes after 10 misses</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Node 05</div>
+                    <div class="node-name">Distance Evaluator</div>
+                    <div class="node-desc">Compares estimated 3D distances against nuScenes ground truth annotations, computing median, mean, and p90 spatial errors for validation</div>
+                </div>
+            </div>
+
+            <h3>Key Technical Details</h3>
+            <ul class="feature-list">
+                <li>LiDAR-to-camera projection using nuScenes calibration matrices (intrinsics + extrinsics)</li>
+                <li>Ego-motion compensation applied to LiDAR point clouds to account for vehicle movement between frames</li>
+                <li>Kalman filter state vector: [x, y, vx, vy] in ego vehicle frame, constant-velocity motion model</li>
+                <li>Hungarian algorithm (scipy.optimize.linear_sum_assignment) for globally optimal track-to-measurement assignment</li>
+                <li>Track lifecycle: tentative (hits less than 2) to confirmed, pruned after 10 consecutive misses</li>
+                <li>RViz2 visualization: fused overlays, 3D sphere markers, velocity arrows, persistent track ID labels</li>
+                <li>Evaluated on front camera, objects within 60m range against nuScenes mini ground truth</li>
+            </ul>
+
+            <h3>Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>ROS2 Humble</h4>
+                    <p>Node framework, topic pub/sub, RViz2 visualization</p>
+                </div>
+                <div class="tech-item">
+                    <h4>YOLOv8 (Ultralytics)</h4>
+                    <p>2D object detection, COCO-pretrained, GPU/CPU inference</p>
+                </div>
+                <div class="tech-item">
+                    <h4>nuScenes devkit</h4>
+                    <p>Dataset streaming, calibration transforms, ground truth access</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Kalman Filter</h4>
+                    <p>Constant-velocity motion model, 4D state vector [x, y, vx, vy]</p>
+                </div>
+                <div class="tech-item">
+                    <h4>SciPy Hungarian</h4>
+                    <p>Optimal data association via linear sum assignment</p>
+                </div>
+                <div class="tech-item">
+                    <h4>OpenCV</h4>
+                    <p>Image processing, bounding box overlays, projection utilities</p>
+                </div>
+                <div class="tech-item">
+                    <h4>PyTorch</h4>
+                    <p>YOLOv8 model inference backend</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Ubuntu 22.04</h4>
+                    <p>Python 3.10, simulation-only deployment</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="content-block">
+            <h2>Results</h2>
+            <div class="results-row">
+                <div class="result-card">
+                    <div class="result-value">0.3m</div>
+                    <div class="result-label">Median Spatial Error vs nuScenes GT</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">5</div>
+                    <div class="result-label">Coordinated ROS2 Nodes</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">8 fps</div>
+                    <div class="result-label">Detection Rate</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value">60m</div>
+                    <div class="result-label">Max Tracking Range</div>
+                </div>
+            </div>
+            <ul class="feature-list">
+                <li>Persistent track IDs maintained across nuScenes mini sequences with multi-object scenes</li>
+                <li>Real-time RViz2 visualization with bounding boxes, distance labels, track IDs, and velocity arrows</li>
+                <li>Distance evaluation validated against nuScenes front camera ground truth annotations</li>
+                <li>Robust to track dropouts: confirmed tracks tolerate up to 10 consecutive missed detections</li>
+            </ul>
+        </div>
+
+        <!-- Challenges -->
+        <div class="content-block">
+            <h2>Challenges & Learnings</h2>
+            <p>
+                The most technically demanding aspect was correctly projecting LiDAR point clouds into the camera frame using nuScenes calibration matrices, while also applying ego-motion compensation to account for vehicle movement between LiDAR sweeps and camera frames. Misaligning these transforms by even a small amount causes 3D centroids to drift significantly in world space.
+            </p>
+            <p>
+                Tuning the Kalman filter - particularly the process noise and measurement noise variances - required understanding the trade-off between track smoothness and responsiveness to real detections. Too much process noise makes tracks jump; too little makes them lag behind fast-moving objects.
+            </p>
+            <p>
+                Building and debugging across five simultaneous ROS2 nodes also strengthened system-level thinking: understanding topic timing, message synchronization, and how failures propagate through a multi-node perception pipeline.
+            </p>
+        </div>
+
+        <!-- Applications -->
+        <div class="content-block">
+            <h2>Real-World Applications</h2>
+            <ul class="feature-list">
+                <li>Autonomous driving perception stacks requiring real-time multi-object tracking</li>
+                <li>Mobile robots operating in dynamic environments with multiple moving agents</li>
+                <li>Warehouse and logistics automation for tracking people and vehicles simultaneously</li>
+                <li>Any robotics system requiring temporally consistent 3D scene understanding</li>
+            </ul>
+        </div>
+
+        <!-- GitHub -->
+        <div class="content-block" style="text-align: center;">
+            <h2>Source Code & Reproducible Pipeline</h2>
+            <p>Complete ROS2 workspace, setup notes, and pipeline documentation available on GitHub.</p>
+            <a href="https://github.com/Kaushik-DIY/ROS2-YOLO-mot" target="_blank" class="github-btn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View on GitHub
+            </a>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color: #64748b; margin-top: 0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top: 1rem;">
+                        <a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a>
+                        <a href="tel:+4917676507326">+49 176 76507326</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

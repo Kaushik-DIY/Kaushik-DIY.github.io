@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REINFORCE Policy Gradient Agent for Pixelcopter | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero-banner { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+        .tech-item { background: #f8fafc; padding: 1.1rem; border-radius: 6px; border-left: 4px solid #1a1a2e; }
+        .tech-item h4 { font-size: 0.88rem; font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; }
+        .tech-item p { font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.5; }
+        .feature-list li::before { color: #1a1a2e; }
+        
+        .project-hero-banner { padding: 4rem 0; color: white; }
+        .project-hero-banner h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.2; letter-spacing: -0.5px; }
+        .project-hero-banner .subtitle { font-size: 1.1rem; opacity: 0.92; margin-bottom: 1.8rem; }
+        .meta-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .meta-tag { background: rgba(255,255,255,0.2); color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); }
+        .demo-block { background: white; padding: 2.5rem; border-radius: 12px; margin: 3rem 0 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .demo-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1.5rem; }
+        .demo-media { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .demo-caption { text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.88rem; font-style: italic; }
+        .content-block { background: white; padding: 2.5rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .content-block h2 { font-size: 1.6rem; font-weight: 700; color: #1a202c; margin-bottom: 1rem; }
+        .content-block h3 { font-size: 1.1rem; font-weight: 700; color: #1a202c; margin: 1.5rem 0 0.75rem; }
+        .content-block p { font-size: 0.95rem; color: #475569; line-height: 1.8; margin-bottom: 0.75rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .results-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .result-label { font-size: 0.8rem; color: #64748b; font-weight: 500; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+        .github-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #1a202c; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; }
+        .github-btn:hover { background: #2d3748; transform: translateY(-1px); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: white; opacity: 0.85; text-decoration: none; font-weight: 600; font-size: 0.88rem; margin-bottom: 2rem; }
+        .back-link:hover { opacity: 1; }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="project-hero-banner">
+        <div class="container">
+            <a href="projects.html" class="back-link">← Back to Projects</a>
+            <h1>REINFORCE Policy Gradient Agent for Pixelcopter</h1>
+            <p class="subtitle">Implementing vanilla policy gradient from scratch to train a visual control agent on raw pixel input</p>
+            <div class="meta-bar"><span class="meta-tag">REINFORCE</span><span class="meta-tag">Policy Gradient</span><span class="meta-tag">Visual RL</span><span class="meta-tag">Custom Implementation</span><span class="meta-tag">PLE</span></div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="demo-block">
+            <h2>Agent Demo</h2>
+            <img src="assets/projects/rl/pixel_copter.gif" alt="REINFORCE Policy Gradient Agent for Pixelcopter Demo" class="demo-media">
+            <p class="demo-caption">REINFORCE agent controlling the helicopter through gaps - learned entirely from pixel observations without any hand-crafted features</p>
+        </div>
+    </section>
+    <section class="container">
+        <div class="content-block"><h2>Overview</h2><p>Implemented the REINFORCE policy gradient algorithm from scratch in PyTorch to train an agent on Pixelcopter-PLE-v0 - a visual control task where the agent sees only raw pixel input and must learn to toggle engine thrust to fly a helicopter through an endless series of gaps. The policy network maps pixel observations directly to action probabilities, with no hand-crafted features or domain knowledge.</p></div>
+        <div class="content-block"><h2>Problem and Approach</h2><p>Pixelcopter is a deceptively hard visual control problem. The observation is a small pixel grid (48x48) and the agent must learn: what the helicopter looks like, what constitutes a gap, how to estimate distance to walls, and how to control altitude through discrete thrust toggles - all from reward signal alone.</p><p>REINFORCE, as the simplest policy gradient method, has high variance in its gradient estimates because it uses full Monte Carlo returns. This makes it harder to train stable policies on visual tasks than actor-critic methods, but also makes it an important baseline for understanding why variance reduction techniques (baselines, advantage estimation) matter in practice.</p></div>
+        <div class="content-block"><h2>Technical Implementation</h2><h3>Algorithm: REINFORCE (Vanilla Policy Gradient)</h3>
+            <p>The policy is a convolutional neural network mapping pixel observations to action logits. At each episode, a full trajectory is collected and the policy is updated by maximizing the log-probability of taken actions weighted by their discounted returns. No value function or advantage estimation is used - purely Monte Carlo returns with a reward-to-go formulation.</p>
+            <h3>Environment Details</h3>
+            <ul class="feature-list">
+                <li>Environment: Pixelcopter-PLE-v0 (PyGame Learning Environment)</li>
+                <li>Observation: Raw pixel grid (48x48 RGB) - no engineered features</li>
+                <li>Action space: 2 discrete actions (thrust on, thrust off)</li>
+                <li>Reward: +1 per gap passed, -1 for collision</li>
+                <li>Challenge: High-variance gradient estimates from Monte Carlo returns on pixel input</li>
+            </ul>
+            <div class="tech-grid">
+                <div class="tech-item"><h4>REINFORCE</h4><p>Monte Carlo policy gradient with reward-to-go formulation</p></div>
+                <div class="tech-item"><h4>CNN Policy</h4><p>Convolutional network mapping raw pixels to action probabilities</p></div>
+                <div class="tech-item"><h4>PyGame Learning Environment</h4><p>Pixelcopter-PLE-v0 visual game environment</p></div>
+                <div class="tech-item"><h4>PyTorch</h4><p>Policy network training and gradient computation</p></div>
+            </div></div>
+        <div class="content-block">
+            <h2>Results</h2>
+            <div class="results-row"><div class="result-card"><div class="result-value" style="color:#0f3460">43.70</div><div class="result-label">Mean Reward</div></div><div class="result-card"><div class="result-value" style="color:#0f3460">±31.20</div><div class="result-label">Std Deviation</div></div><div class="result-card"><div class="result-value" style="color:#0f3460">48x48</div><div class="result-label">Pixel Observation</div></div></div>
+            <ul class="feature-list"><li>Achieved mean reward of 43.70 ± 31.20 across evaluation episodes</li><li>Policy learned to identify gaps and modulate thrust from raw pixel input with no feature engineering</li><li>High variance (±31.20) reflects the inherent instability of vanilla REINFORCE on visual tasks - motivating actor-critic methods</li></ul>
+        </div>
+        <div class="content-block"><h2>Key Learnings</h2><p>The high standard deviation in results (±31.20) is itself an important finding. It demonstrates concretely why REINFORCE struggles on visual tasks: full Monte Carlo returns create noisy gradient estimates that cause significant performance variation between runs. This makes a compelling practical argument for variance reduction techniques - baselines, advantage estimation, and actor-critic architectures are not just theoretical improvements, they are necessary engineering choices for stable visual RL.</p><p>Working directly with pixel observations also highlighted the sensitivity of convolutional policies to input normalization and architecture choices in ways that are invisible when using pre-processed state vectors.</p></div>
+        <div class="content-block"><h2>Real-World Relevance</h2><ul class="feature-list"><li>Understanding the limitations of vanilla policy gradient as motivation for modern actor-critic methods</li><li>Visual control tasks where feature engineering is impractical or impossible</li><li>Baseline comparison for evaluating variance reduction techniques in policy gradient research</li></ul></div>
+        <div class="content-block" style="text-align:center;">
+            <h2>Model and Code</h2>
+            <p>Trained model and evaluation metrics published on HuggingFace.</p>
+            <a href="https://huggingface.co/Kaushik23/Pixel-copter" target="_blank" class="github-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on HuggingFace
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color:#64748b;margin-top:0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top:1rem;"><a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a></div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p></div>
+        </div>
+    </footer>
+</body>
+</html>

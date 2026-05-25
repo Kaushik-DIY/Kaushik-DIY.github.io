@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Landing | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero-banner { background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); }
+        .tech-item { background: #f8fafc; padding: 1.1rem; border-radius: 6px; border-left: 4px solid #0f0c29; }
+        .tech-item h4 { font-size: 0.88rem; font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; }
+        .tech-item p { font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.5; }
+        .feature-list li::before { color: #0f0c29; }
+        
+        .project-hero-banner { padding: 4rem 0; color: white; }
+        .project-hero-banner h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.2; letter-spacing: -0.5px; }
+        .project-hero-banner .subtitle { font-size: 1.1rem; opacity: 0.92; margin-bottom: 1.8rem; }
+        .meta-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .meta-tag { background: rgba(255,255,255,0.2); color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.3); }
+        .demo-block { background: white; padding: 2.5rem; border-radius: 12px; margin: 3rem 0 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .demo-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1.5rem; }
+        .demo-media { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .demo-caption { text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.88rem; font-style: italic; }
+        .content-block { background: white; padding: 2.5rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .content-block h2 { font-size: 1.6rem; font-weight: 700; color: #1a202c; margin-bottom: 1rem; }
+        .content-block h3 { font-size: 1.1rem; font-weight: 700; color: #1a202c; margin: 1.5rem 0 0.75rem; }
+        .content-block p { font-size: 0.95rem; color: #475569; line-height: 1.8; margin-bottom: 0.75rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .results-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .result-label { font-size: 0.8rem; color: #64748b; font-weight: 500; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+        .github-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #1a202c; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; }
+        .github-btn:hover { background: #2d3748; transform: translateY(-1px); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: white; opacity: 0.85; text-decoration: none; font-weight: 600; font-size: 0.88rem; margin-bottom: 2rem; }
+        .back-link:hover { opacity: 1; }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="project-hero-banner">
+        <div class="container">
+            <a href="projects.html" class="back-link">← Back to Projects</a>
+            <h1>Precision Landing with PPO: LunarLander-v2</h1>
+            <p class="subtitle">Training a continuous control agent to land a spacecraft between two flags using Proximal Policy Optimization</p>
+            <div class="meta-bar"><span class="meta-tag">PPO</span><span class="meta-tag">CleanRL</span><span class="meta-tag">Gymnasium</span><span class="meta-tag">Continuous Control</span><span class="meta-tag">PyTorch</span></div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="demo-block">
+            <h2>Agent Demo</h2>
+            <img src="assets/projects/rl/lunar_lander.gif" alt="Precision Landing with PPO: LunarLander-v2 Demo" class="demo-media">
+            <p class="demo-caption">PPO agent executing a stable landing between the two flags - throttling main and side engines to control descent</p>
+        </div>
+    </section>
+    <section class="container">
+        <div class="content-block"><h2>Overview</h2><p>Trained a PPO agent using a CleanRL-style implementation in PyTorch to solve the LunarLander-v2 environment from Gymnasium. The agent controls a lander with three engine actuators - main engine and two side boosters - and must learn to descend smoothly and land precisely between two flags on uneven terrain, without crashing or running out of fuel.</p></div>
+        <div class="content-block"><h2>Problem and Approach</h2><p>LunarLander-v2 is a classic benchmark for continuous control with discrete actions. The challenge is that the environment rewards precision: landing too fast, touching legs outside the pad, or firing engines unnecessarily all incur penalties. The agent must learn a nuanced policy that balances fuel efficiency against stability - which requires understanding the physics of thrust and gravity simultaneously.</p><p>PPO is well-suited here because the policy must be updated carefully to avoid catastrophic forgetting of stable landing behavior discovered earlier in training. The clipped surrogate objective prevents large, destabilizing updates to the policy.</p></div>
+        <div class="content-block"><h2>Technical Implementation</h2><h3>Algorithm: PPO (CleanRL-style)</h3>
+            <p>Implemented using CleanRL's clean single-file PPO in PyTorch. The policy network maps the 8-dimensional state vector to action logits, updated via the clipped surrogate objective with generalized advantage estimation (GAE). Entropy bonus maintains sufficient exploration throughout training.</p>
+            <h3>Environment Details</h3>
+            <ul class="feature-list">
+                <li>Environment: LunarLander-v2 (Gymnasium)</li>
+                <li>Observation: 8-dimensional state vector (position, velocity, angle, angular velocity, leg contact flags)</li>
+                <li>Action space: 4 discrete actions (do nothing, fire left engine, fire main engine, fire right engine)</li>
+                <li>Reward: +100/+10 for landing legs, -100 for crash, -0.3 per frame main engine fired, -0.03 side engine</li>
+                <li>Solved threshold: mean reward above 200 over 100 episodes</li>
+            </ul>
+            <div class="tech-grid">
+                <div class="tech-item"><h4>PPO</h4><p>Clipped surrogate objective with GAE for stable policy updates</p></div>
+                <div class="tech-item"><h4>CleanRL</h4><p>Single-file clean implementation for transparency and reproducibility</p></div>
+                <div class="tech-item"><h4>Gymnasium</h4><p>LunarLander-v2 physics simulation environment</p></div>
+                <div class="tech-item"><h4>PyTorch</h4><p>Policy and value network implementation</p></div>
+            </div></div>
+        <div class="content-block">
+            <h2>Results</h2>
+            <div class="results-row"><div class="result-card"><div class="result-value" style="color:#302b63">116.31</div><div class="result-label">Mean Reward</div></div><div class="result-card"><div class="result-value" style="color:#302b63">±18.91</div><div class="result-label">Std Deviation</div></div><div class="result-card"><div class="result-value" style="color:#302b63">8D</div><div class="result-label">State Observation</div></div></div>
+            <ul class="feature-list"><li>Achieved mean reward of 116.31 ± 18.91 across evaluation episodes</li><li>Agent learned stable descent profiles - throttling engines to control angular momentum and descent rate</li><li>Consistent leg-contact landings within the designated pad area</li></ul>
+        </div>
+        <div class="content-block"><h2>Key Learnings</h2><p>LunarLander-v2 taught the importance of reward shaping awareness. The fuel penalty fundamentally changes the learned policy - an agent trained without it learns aggressive, high-thrust landings, while the penalized version develops a more fuel-efficient glide approach. Understanding how reward structure shapes behavior, not just outcome, is a key insight for designing RL systems in real applications.</p><p>GAE's lambda parameter also had a significant effect: lower lambda produced lower-variance but higher-bias advantage estimates, leading to faster convergence but sometimes suboptimal final policies. Tuning this tradeoff was a meaningful practical exercise.</p></div>
+        <div class="content-block"><h2>Real-World Relevance</h2><ul class="feature-list"><li>Autonomous spacecraft or drone precision landing under fuel constraints</li><li>Any control task where the agent must balance efficiency and stability simultaneously</li><li>Benchmark for testing policy gradient methods on physics-based control problems</li></ul></div>
+        <div class="content-block" style="text-align:center;">
+            <h2>Model and Code</h2>
+            <p>Trained model and evaluation metrics published on HuggingFace.</p>
+            <a href="https://huggingface.co/Kaushik23/LunarLander-v2" target="_blank" class="github-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on HuggingFace
+            </a>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color:#64748b;margin-top:0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top:1rem;"><a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a></div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p></div>
+        </div>
+    </footer>
+</body>
+</html>
