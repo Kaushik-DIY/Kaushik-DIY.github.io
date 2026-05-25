@@ -6,6 +6,35 @@
     <meta name="description" content="Kaushik Mitra Venkat - Robotics Engineer specializing in perception systems, SLAM, and autonomous navigation">
     <title>Kaushik Mitra Venkat - Robotics Engineer</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fix: enforce consistent card visual height across all cards */
+        .project-visual {
+            height: 240px !important;
+            min-height: 240px !important;
+        }
+        .project-visual img,
+        .project-visual .gif-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Fix: reduce gap between CTA buttons and Why Robotics section */
+        .hero {
+            min-height: auto !important;
+            padding-bottom: 1.5rem !important;
+        }
+        .why-robotics-full {
+            margin-top: 0 !important;
+            margin-bottom: 2rem !important;
+        }
+        .cta-buttons {
+            margin-bottom: 0 !important;
+        }
+        .hero-text-only .hero-mission {
+            margin-bottom: 1.5rem !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
