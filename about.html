@@ -131,55 +131,68 @@
         
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
             margin: 2rem 0;
         }
 
         .cert-card {
             background: white;
+            padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             border-left: 4px solid #6366f1;
-            overflow: hidden;
             cursor: pointer;
             transition: transform 0.25s, box-shadow 0.25s;
+            position: relative;
         }
 
         .cert-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(99,102,241,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99,102,241,0.12);
         }
 
-        .cert-thumb {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            object-position: top;
-            display: block;
-            border-bottom: 1px solid #e2e8f0;
+        .cert-logo {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            opacity: 0.6;
+            transition: opacity 0.2s;
         }
 
-        .cert-info {
-            padding: 1.25rem 1.5rem;
+        .cert-card:hover .cert-logo {
+            opacity: 1;
         }
 
         .cert-card h3 {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: #1a202c;
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
+            padding-right: 2.8rem;
         }
 
         .cert-card p {
             color: #64748b;
-            font-size: 0.88rem;
-            margin: 0;
+            font-size: 0.85rem;
+            margin-bottom: 0;
         }
 
-        .cert-click-hint {
-            font-size: 0.75rem;
-            color: #a0aec0;
-            margin-top: 0.4rem;
+        .cert-view-label {
+            display: none;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #6366f1;
+            margin-top: 0.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        .cert-card:hover .cert-view-label {
+            display: block;
         }
 
         /* Lightbox */
@@ -187,7 +200,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.88);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -199,8 +212,8 @@
         }
 
         .lightbox-img {
-            max-width: 90vw;
-            max-height: 88vh;
+            max-width: 88vw;
+            max-height: 86vh;
             border-radius: 8px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             object-fit: contain;
@@ -208,22 +221,27 @@
 
         .lightbox-close {
             position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
+            top: 1.2rem;
+            right: 1.2rem;
             background: white;
             border: none;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            font-size: 1.3rem;
+            width: 42px;
+            height: 42px;
+            font-size: 1.2rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #1a202c;
             font-weight: 700;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
             z-index: 1001;
+            transition: background 0.2s;
+        }
+
+        .lightbox-close:hover {
+            background: #f1f5f9;
         }
         
         @media (max-width: 768px) {
@@ -261,10 +279,13 @@
                 <h1>Kaushik Mitra Venkat</h1>
                 <div class="role">Robotics Engineer</div>
                 <p>
-                    Robotics Engineer specializing in perception systems, SLAM, and autonomous navigation for mobile robotics. Hands-on experience developing ROS/ROS2 pipelines integrating LiDAR, RGB-D cameras, IMU, and multi-sensor fusion for environment understanding.
+                    I'm a Robotics Engineer who is constantly fascinated by a simple but deep question: can we truly understand how our intelligence works and build a machine that recreates it? Moving beyond just automating tasks and creating systems that can operate where humans physically shouldn't have to, handle what's unpredictable, and solve problems that actually matter.
                 </p>
                 <p>
-                    Built systems for object detection, point-cloud processing, EKF-based state estimation, and graph-based optimization. Proficient in Python, C++, OpenCV, PyTorch, and NVIDIA Jetson deployment. Currently pursuing a Master's in Mechatronics at University of Siegen, with focus on robotics perception, control systems, and machine learning for autonomous systems.
+                    A robotic system looks overwhelming until we decompose it. Then it becomes a collection of logical building blocks, each with a reason for existing. I like to understand each block, understand how they connect, and then build it. What's truly satisfying is seeing the system work in the real world, beyond simulations. That's where the real application begins.
+                </p>
+                <p>
+                    What excites me most is what happens when AI meets classical robotics. Reinforcement learning, imitation learning, VLA models, not as replacements but as tools that push robots further into unstructured, real environments. Beyond the technology, I like to explore and understand more where robotics can create an impact, particularly in situations like safety-critical and mission-critical tasks, where a capable autonomous system doesn't just add efficiency, it changes what's possible.
                 </p>
                 <p>
                     <strong>Location:</strong> Siegen, Germany<br>
@@ -380,32 +401,31 @@
         </div>
         
         <div class="cert-grid">
+
             <div class="cert-card" onclick="openLightbox('assets/certs/cert_rl.jpg')">
-                <img src="assets/certs/cert_rl.jpg" alt="Deep Reinforcement Learning Certificate" class="cert-thumb">
-                <div class="cert-info">
-                    <h3>Deep Reinforcement Learning</h3>
-                    <p>Hugging Face · 2026</p>
-                    <div class="cert-click-hint">Click to view certificate</div>
-                </div>
+                <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                     alt="Hugging Face" class="cert-logo">
+                <h3>Deep Reinforcement Learning</h3>
+                <p>Hugging Face</p>
+                <div class="cert-view-label">View Certificate</div>
             </div>
 
             <div class="cert-card" onclick="openLightbox('assets/certs/cert_atlassian.jpg')">
-                <img src="assets/certs/cert_atlassian.jpg" alt="Atlassian Agile Certificate" class="cert-thumb">
-                <div class="cert-info">
-                    <h3>Agile Project Management Professional Certificate</h3>
-                    <p>Atlassian · LinkedIn Learning · 2026</p>
-                    <div class="cert-click-hint">Click to view certificate</div>
-                </div>
+                <img src="https://cdn.worldvectorlogo.com/logos/atlassian-1.svg"
+                     alt="Atlassian" class="cert-logo">
+                <h3>Agile Project Management Professional Certificate</h3>
+                <p>Atlassian · LinkedIn Learning</p>
+                <div class="cert-view-label">View Certificate</div>
             </div>
 
             <div class="cert-card" onclick="openLightbox('assets/certs/cert_coursera.jpg')">
-                <img src="assets/certs/cert_coursera.jpg" alt="Facial Expression Recognition Certificate" class="cert-thumb">
-                <div class="cert-info">
-                    <h3>Facial Expression Recognition with PyTorch</h3>
-                    <p>Coursera · 2025</p>
-                    <div class="cert-click-hint">Click to view certificate</div>
-                </div>
+                <img src="assets/certs/coursera_logo.png"
+                     alt="Coursera" class="cert-logo">
+                <h3>Facial Expression Recognition with PyTorch</h3>
+                <p>Coursera</p>
+                <div class="cert-view-label">View Certificate</div>
             </div>
+
         </div>
 
         <!-- Lightbox -->
@@ -444,15 +464,22 @@
 
     <script>
         function openLightbox(src) {
-            document.getElementById('lightbox-img').src = src;
-            document.getElementById('lightbox').classList.add('active');
+            const img = document.getElementById('lightbox-img');
+            const overlay = document.getElementById('lightbox');
+            // Load image only now, on demand
+            img.src = src;
+            overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox(e) {
             if (!e || e.target !== document.getElementById('lightbox-img')) {
-                document.getElementById('lightbox').classList.remove('active');
+                const overlay = document.getElementById('lightbox');
+                const img = document.getElementById('lightbox-img');
+                overlay.classList.remove('active');
                 document.body.style.overflow = '';
+                // Clear src so image is not held in memory
+                setTimeout(() => { img.src = ''; }, 300);
             }
         }
 
