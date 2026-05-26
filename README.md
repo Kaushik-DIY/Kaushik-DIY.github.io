@@ -4,7 +4,7 @@ Robotics Engineer specializing in perception systems, SLAM, and autonomous navig
 
 ## 🚀 Live Website
 
-Visit: **[kaushik.github.io](https://kaushik.github.io)**
+Visit: **[kaushik.github.io](https://kaushik-diy.github.io)**
 
 ## 📧 Contact
 
