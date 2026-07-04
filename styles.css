@@ -273,7 +273,7 @@ nav .container {
 }
 
 .project-visual {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #eef2f6;
     position: relative;
     overflow: hidden;
     min-height: 160px;
@@ -287,22 +287,6 @@ nav .container {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.project-visual::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 20px,
-        rgba(255, 255, 255, 0.02) 20px,
-        rgba(255, 255, 255, 0.02) 40px
-    );
 }
 
 .project-icon {
@@ -381,23 +365,6 @@ nav .container {
 .project-link::after {
     content: '→';
     font-size: 1.2rem;
-}
-
-/* Alternate gradients */
-.project-card:nth-child(2) .project-visual {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.project-card:nth-child(3) .project-visual {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-.project-card:nth-child(4) .project-visual {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-}
-
-.project-card:nth-child(5) .project-visual {
-    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }
 
 /* Footer */

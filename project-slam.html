@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modular, Sensor-Agnostic & Extensible SLAM Framework | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero-banner { background: linear-gradient(135deg, #0f2027 0%, #203a43 55%, #2c5364 100%); padding: 4rem 0; color: white; }
+        .project-hero-banner h1 { font-size: 2.6rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.2; letter-spacing: -0.5px; }
+        .project-hero-banner .thesis-tag { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #7fd8d4; margin-bottom: 1rem; }
+        .project-hero-banner .subtitle { font-size: 1.05rem; opacity: 0.9; margin-bottom: 1.8rem; max-width: 820px; }
+        .meta-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .meta-tag { background: rgba(255,255,255,0.15); color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.25); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: white; opacity: 0.8; text-decoration: none; font-weight: 600; font-size: 0.88rem; margin-bottom: 2rem; transition: opacity 0.2s; }
+        .back-link:hover { opacity: 1; }
+        .demo-block { background: white; padding: 2.5rem; border-radius: 12px; margin: 3rem 0 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .demo-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1.5rem; }
+        .demo-video { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .demo-caption { text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.88rem; font-style: italic; }
+        .content-block { background: white; padding: 2.5rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .content-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1rem; }
+        .content-block h3 { font-size: 1.05rem; font-weight: 700; color: #1a202c; margin: 1.5rem 0 0.6rem; }
+        .content-block p { font-size: 0.93rem; color: #475569; line-height: 1.8; margin-bottom: 0.75rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .tech-item { background: #f8fafc; padding: 1.1rem; border-radius: 6px; border-left: 4px solid #1b4965; }
+        .tech-item h4 { font-size: 0.88rem; font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; }
+        .tech-item p { font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.5; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+        .feature-list li::before { content: '→'; position: absolute; left: 0; color: #2c7a7b; font-weight: bold; }
+        .pipeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .pipeline-node { background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #2c7a7b; padding: 1.2rem; border-radius: 6px; }
+        .pipeline-node .node-num { font-size: 0.65rem; font-weight: 700; color: #2c7a7b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.4rem; }
+        .pipeline-node .node-name { font-size: 0.92rem; font-weight: 700; color: #1a202c; margin-bottom: 0.4rem; }
+        .pipeline-node .node-desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
+        .results-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .result-value { font-size: 1.6rem; font-weight: 700; color: #1b4965; margin-bottom: 0.25rem; }
+        .result-label { font-size: 0.78rem; color: #64748b; font-weight: 500; }
+        .summary-img { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 1rem; }
+        .github-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #1a202c; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; }
+        .github-btn:hover { background: #2d3748; transform: translateY(-1px); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero-banner">
+        <div class="container">
+            <a href="projects.html" class="back-link">← Back to Projects</a>
+            <div class="thesis-tag">Master Thesis</div>
+            <h1>Modular, Sensor-Agnostic & Extensible SLAM Framework</h1>
+            <p class="subtitle">One SLAM system where the front-end, loop proposer, and loop verifier are interchangeable modules across LiDAR and visual sensing - composable into any pipeline and swappable live, mid-run, over a single shared map.</p>
+            <div class="meta-bar">
+                <span class="meta-tag">Multi-Modal SLAM</span>
+                <span class="meta-tag">Sensor Fusion</span>
+                <span class="meta-tag">LiDAR + Visual</span>
+                <span class="meta-tag">RTAB-Map Inspired</span>
+                <span class="meta-tag">C++ / Python</span>
+                <span class="meta-tag">Real-Time</span>
+                <span class="meta-tag">NVIDIA Jetson</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="demo-block">
+            <h2>Live Demo - Switching Modules Mid-Run</h2>
+            <video class="demo-video" controls autoplay loop muted playsinline poster="assets/projects/slam_card_poster.jpg" preload="metadata">
+                <source src="assets/projects/switching_demo_compressed.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="demo-caption">Robot camera POV (left) and the live occupancy map with loop closures (right). The front-end, proposer, and verifier are exchanged on the fly - including a full visual-to-LiDAR sensor handoff - while the same shared map keeps building without a break in the trajectory.</p>
+        </div>
+    </section>
+
+    <section class="container">
+
+        <div class="content-block">
+            <h2>Overview</h2>
+            <p>A modular SLAM framework that treats simultaneous localization and mapping as a set of interchangeable components rather than a single fixed pipeline. Every pipeline is reduced to three swappable axes - the front-end (odometry), the loop proposer, and the loop verifier - operating over one shared planar map and one shared memory hierarchy. Each keyframe, whether it comes from a 2D LiDAR or an RGB-D camera, is converted into a common map unit, so established SLAM methods interoperate as plug-in modules through explicit interfaces instead of being locked to one sensor. The result is a single system that can be configured into many distinct pipelines, mix sensing modalities, and exchange any module while a run is in progress. It was built as a hybrid C++/Python system and evaluated on real indoor datasets captured with a Jetson-powered mobile robot.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Why This Problem</h2>
+            <p>SLAM systems are usually built as tightly-coupled, single-sensor pipelines. A visual system and a LiDAR system share the same underlying stages - odometry, loop detection, loop verification, and graph optimization - yet their implementations are entangled and cannot be mixed, compared, or extended without rewriting large parts of the stack. That makes it hard to test one new component in isolation, hard to fall back to a second sensor when the first degrades, and hard to reuse a proven optimizer or memory model across modalities.</p>
+            <p>This work reframes SLAM as a software-architecture problem. By defining clean interfaces between the front-end, proposer, verifier, and back-end, any module becomes replaceable and any sensor becomes a source of the same shared map. The payoff is threefold: pipelines can be chosen to fit the environment, a single new component can be benchmarked against alternatives under identical conditions, and the system can keep mapping through a live sensor or module change instead of restarting.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Technical Implementation</h2>
+            <h3>Pipeline Architecture</h3>
+            <div class="pipeline-grid">
+                <div class="pipeline-node">
+                    <div class="node-num">Axis 01</div>
+                    <div class="node-name">Interchangeable Front-End</div>
+                    <div class="node-desc">Three odometry front-ends behind one interface: LiDAR scan-to-submap, LiDAR scan-to-map, and RGB-D visual odometry. Each emits keyframe poses in a common planar base frame, so any front-end feeds the same map.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Core</div>
+                    <div class="node-name">Shared Map & Memory</div>
+                    <div class="node-desc">Every keyframe becomes a common "signature" - pose, LiDAR scan, and ORB visual payload - in one SE(2) graph. An RTAB-Map-inspired short-term / working / long-term memory hierarchy keeps the active search set bounded for real-time operation.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Axis 02</div>
+                    <div class="node-name">Interchangeable Proposer</div>
+                    <div class="node-desc">Loop candidates come from either pose-graph proximity search with long-term-memory retrieval, or DBoW appearance-based place recognition - selectable independently of the front-end.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Axis 03</div>
+                    <div class="node-name">Cross-Modal Verifier</div>
+                    <div class="node-desc">Candidates are confirmed by LiDAR branch-and-bound, ICP (GICP), or visual PnP RANSAC. One modality can propose a loop and a different one can confirm it - cross-checking that rejects false closures before they corrupt the map.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Back End</div>
+                    <div class="node-name">Shared SE(2) Optimizer</div>
+                    <div class="node-desc">A single g2o pose-graph back-end owns global consistency for every configuration. Verified loops deform the one shared map, so the optimizer is reused rather than reimplemented per sensor.</div>
+                </div>
+            </div>
+
+            <h3>Live Module Switching</h3>
+            <p>Because all state lives in one sensor-agnostic map and both front-ends emit poses in the same base frame, any module can be exchanged during a run - the loop proposer, the verifier, the LiDAR variant, and even the tracking sensor itself. A visual-to-LiDAR handoff continues the trajectory from the optimized graph pose with no teleport and no map reset, demonstrating that modularity holds not just at configuration time but live.</p>
+
+            <h3>Efficient by Design</h3>
+            <p>The hot path - signature store, memory tiers, SE(2) graph, and branch-and-bound - runs in a native C++ core, while Python handles orchestration, configuration, and live control. The tiered memory model bounds how many past places are ever searched, keeping per-keyframe cost low and the system light enough to target compute-constrained embedded platforms.</p>
+
+            <h3>Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-item"><h4>C++ Core</h4><p>Signatures, STM/WM/LTM memory, SE(2) graph, and branch-and-bound on the real-time hot path</p></div>
+                <div class="tech-item"><h4>Python Orchestration</h4><p>Runner, live module switching, dataset and ROS event sources</p></div>
+                <div class="tech-item"><h4>g2o</h4><p>Shared SE(2) pose-graph optimization back-end</p></div>
+                <div class="tech-item"><h4>DBoW3</h4><p>Appearance-based loop candidate retrieval</p></div>
+                <div class="tech-item"><h4>small_gicp</h4><p>ICP / GICP scan-based loop verification</p></div>
+                <div class="tech-item"><h4>ORB + PnP RANSAC</h4><p>Visual descriptor matching and geometric loop verification</p></div>
+                <div class="tech-item"><h4>RTAB-Map-Inspired Memory</h4><p>Short-term / working / long-term tiers with rehearsal and retrieval</p></div>
+                <div class="tech-item"><h4>NVIDIA Jetson / JetRacer</h4><p>Mobile robot platform used to capture the real indoor datasets</p></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>What Makes It Modular</h2>
+            <div class="results-row">
+                <div class="result-card"><div class="result-value">3</div><div class="result-label">Interchangeable Front-Ends</div></div>
+                <div class="result-card"><div class="result-value">2</div><div class="result-label">Sensor Modalities</div></div>
+                <div class="result-card"><div class="result-value">3 &times; 2 &times; 3</div><div class="result-label">Composable Module Combinations</div></div>
+                <div class="result-card"><div class="result-value">1</div><div class="result-label">Shared SE(2) Map</div></div>
+                <div class="result-card"><div class="result-value">Live</div><div class="result-label">Mid-Run Switching</div></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>Key Learnings</h2>
+            <p>The most valuable insight was that cross-modal loop verification is a genuinely reliable robustness mechanism: letting one modality propose a loop and a different modality confirm it filters out the false closures that a single-sensor pipeline would accept and warp its map around. Getting this right required a shared map representation that carries both a LiDAR scan and a visual payload per keyframe, so either verifier can act on any proposal.</p>
+            <p>Live module switching over one shared map was the other hard problem. Keeping the trajectory continuous across a sensor handoff meant every front-end had to emit poses in the same base frame and continue from the optimized graph pose rather than its own local origin. Combined with a bounded memory hierarchy that keeps the search set small, the framework stays real-time while remaining fully reconfigurable.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Applications</h2>
+            <ul class="feature-list">
+                <li>Sensor-agnostic navigation for mobile robots that must run whichever modality suits the environment</li>
+                <li>Robustness through modality fallback when one sensor degrades in feature-poor or texture-poor scenes</li>
+                <li>A research testbed for benchmarking individual SLAM components under identical conditions</li>
+                <li>Deployment on compute-constrained embedded platforms through bounded, memory-managed search</li>
+                <li>An extensible base for adding learning-based or 3D modules behind the same interfaces</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>Framework in Action</h2>
+            <p>A single shared map assembled across module configurations - live occupancy map, trajectory with loop closures, and the module state driving each segment of the run.</p>
+            <img src="assets/projects/switching_demo_presentation.png" alt="Modular SLAM Framework - switching demo presentation" class="summary-img">
+        </div>
+
+        <div class="content-block" style="text-align:center;">
+            <h2>Source Code</h2>
+            <p>Full hybrid C++/Python framework with the modular front-end, proposer, verifier, and shared back-end, plus the batch and real-time switching runners.</p>
+            <a href="https://github.com/Kaushik-DIY/Modular_SLAM_Framework" target="_blank" class="github-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on GitHub
+            </a>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color:#64748b;margin-top:0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top:1rem;"><a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a></div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p></div>
+        </div>
+    </footer>
+</body>
+</html>
