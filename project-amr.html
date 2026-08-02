@@ -41,11 +41,6 @@
         .summary-img { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 1rem; }
         .github-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #1a202c; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; }
         .github-btn:hover { background: #2d3748; transform: translateY(-1px); }
-        .cmp-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.88rem; }
-        .cmp-table th { text-align: left; padding: 0.7rem 0.9rem; background: #f8fafc; color: #1a202c; font-weight: 700; border-bottom: 2px solid #e2e8f0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-        .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid #e2e8f0; color: #475569; }
-        .cmp-table td.ours { font-weight: 700; color: #1b4965; }
-        .cmp-table tr:last-child td { border-bottom: none; }
     </style>
 </head>
 <body>
@@ -100,7 +95,8 @@
         <div class="content-block">
             <h2>Why This Problem</h2>
             <p>Commissioning is real engineering effort with a real cost: industry sources put solution design and deployment at roughly 30% of equipment spend and 8-14 weeks contract-to-production. Every marked zone also encodes a fixed decision - "slow to 0.79 m/s here" - that cannot adapt to what is actually happening at that spot when the robot arrives.</p>
-            <p>Two obvious framings for this work are both wrong, and knowing why is most of the argument. <strong>"Safer than a commissioned AMR"</strong> is a strawman: a certified machine does not violate the standard - that is the precondition for its deployment, not an achievement to beat. <strong>"Faster"</strong> is mathematically capped: with the same safety-rated scanner on both machines the applied speed is the minimum of the two limits, so parity is the ceiling no policy can exceed. What remains, and what is defended here, is <strong>equivalent compliance and equivalent throughput at zero per-site commissioning</strong> - plus adaptivity a static zone has no way to represent.</p>
+            <p>This work removes that step rather than optimising it. The supervisor derives its speed and clearance from the map the robot already carries for localisation, so bringing it to a new site means loading a map and nothing else - no zones drawn, no field sets sized, no sight lines surveyed, and nothing to re-validate when the racking moves.</p>
+            <p>What makes that deployable is the safety layer beneath it. Rather than a blunt warning field that drops the machine to one fixed speed whenever anything enters a box, a <strong>control-barrier-function filter recomputes every cycle the speed at which the robot can still brake to a stop</strong> for each tracked person - and the safety-rated protective field is retained unchanged underneath it, exactly as on the commissioned machine. The learned policy can only ever request <em>more</em> clearance than that filter demands, never less, so the guarantee never depends on what the network outputs. Industry largely keeps reinforcement learning out of deployed motion control because its behaviour cannot be bounded; here it is bounded by construction, which is what turns a learned component from a research result into something a site can actually run.</p>
         </div>
 
         <div class="content-block">
@@ -158,25 +154,16 @@
                 <div class="result-card"><div class="result-value">1.12 m</div><div class="result-label">Lateral Offset Where Space Is Real</div></div>
                 <div class="result-card"><div class="result-value">2 %</div><div class="result-label">Sim-to-Sim Agreement in Gazebo</div></div>
             </div>
-            <table class="cmp-table">
-                <tr><th>Metric</th><th>Commissioned AMR</th><th>This work</th></tr>
-                <tr><td>Site parameters configured by hand</td><td>13</td><td class="ours">0</td></tr>
-                <tr><td>Mission time (6 randomised runs)</td><td>32.9 s</td><td class="ours">32.6 s</td></tr>
-                <tr><td>ISO stopping-distance violations</td><td>0</td><td class="ours">0</td></tr>
-                <tr><td>Contacts / protective stops</td><td>0 / 0</td><td class="ours">0 / 0</td></tr>
-                <tr><td>Passing a pedestrian, blind escape side</td><td>0.60 m/s, no offset</td><td class="ours">0.58 m/s, no offset</td></tr>
-                <tr><td>Passing a pedestrian, clear escape side</td><td>0.60 m/s, no offset</td><td class="ours">1.20 m/s, 1.12 m offset</td></tr>
-            </table>
             <img src="assets/projects/amr_summary.png" alt="Measured comparison - commissioned AMR versus the RL-supervised stack" class="summary-img">
         </div>
 
         <div class="demo-block">
-            <h2>Validated in 3D - ROS 2, Gazebo and RViz</h2>
+            <h2>Validated in 3D - ROS 2 and Gazebo</h2>
             <video class="demo-video" controls loop muted playsinline poster="assets/projects/amr_card_poster.jpg" preload="metadata">
                 <source src="assets/projects/amr_gazebo_demo.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <p class="demo-caption">The identical control stack - same ONNX policy, same MPC, same safety filter - driving a physics-simulated differential-drive AMR through the same route, reproducing the 2D result to within 2%. RViz (right) shows the protective field: it scales with the square of speed, so it makes the safety margin legible where a speed difference on camera does not.</p>
+            <p class="demo-caption">The identical control stack - same ONNX policy, same MPC, same safety filter - driving a physics-simulated differential-drive AMR through the same route, reproducing the 2D result to within 2%.</p>
         </div>
 
         <div class="content-block">
