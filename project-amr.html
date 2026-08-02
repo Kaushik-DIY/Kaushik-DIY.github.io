@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Context-Adaptive Navigation for Industrial AMRs | Kaushik Mitra Venkat</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero-banner { background: linear-gradient(135deg, #0f2027 0%, #203a43 55%, #2c5364 100%); padding: 4rem 0; color: white; }
+        .project-hero-banner h1 { font-size: 2.6rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.2; letter-spacing: -0.5px; }
+        .project-hero-banner .thesis-tag { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #7fd8d4; margin-bottom: 1rem; }
+        .project-hero-banner .subtitle { font-size: 1.05rem; opacity: 0.9; margin-bottom: 1.8rem; max-width: 820px; }
+        .meta-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .meta-tag { background: rgba(255,255,255,0.15); color: white; padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.25); }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: white; opacity: 0.8; text-decoration: none; font-weight: 600; font-size: 0.88rem; margin-bottom: 2rem; transition: opacity 0.2s; }
+        .back-link:hover { opacity: 1; }
+        .demo-block { background: white; padding: 2.5rem; border-radius: 12px; margin: 3rem 0 2rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .demo-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1.5rem; }
+        .demo-video { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .demo-caption { text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.88rem; font-style: italic; }
+        .content-block { background: white; padding: 2.5rem; border-radius: 12px; margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .content-block h2 { font-size: 1.5rem; font-weight: 700; color: #1a202c; margin-bottom: 1rem; }
+        .content-block h3 { font-size: 1.05rem; font-weight: 700; color: #1a202c; margin: 1.5rem 0 0.6rem; }
+        .content-block p { font-size: 0.93rem; color: #475569; line-height: 1.8; margin-bottom: 0.75rem; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .tech-item { background: #f8fafc; padding: 1.1rem; border-radius: 6px; border-left: 4px solid #1b4965; }
+        .tech-item h4 { font-size: 0.88rem; font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; }
+        .tech-item p { font-size: 0.78rem; color: #64748b; margin: 0; line-height: 1.5; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 0.4rem 0 0.4rem 1.4rem; position: relative; font-size: 0.92rem; color: #475569; line-height: 1.6; }
+        .feature-list li::before { content: '→'; position: absolute; left: 0; color: #2c7a7b; font-weight: bold; }
+        .pipeline-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .pipeline-node { background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #2c7a7b; padding: 1.2rem; border-radius: 6px; }
+        .pipeline-node .node-num { font-size: 0.65rem; font-weight: 700; color: #2c7a7b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.4rem; }
+        .pipeline-node .node-name { font-size: 0.92rem; font-weight: 700; color: #1a202c; margin-bottom: 0.4rem; }
+        .pipeline-node .node-desc { font-size: 0.78rem; color: #64748b; line-height: 1.5; }
+        .results-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .result-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.2rem; text-align: center; }
+        .result-value { font-size: 1.6rem; font-weight: 700; color: #1b4965; margin-bottom: 0.25rem; }
+        .result-label { font-size: 0.78rem; color: #64748b; font-weight: 500; }
+        .summary-img { width: 100%; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 1rem; }
+        .github-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: #1a202c; color: white; padding: 0.9rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.25s; margin-top: 1rem; }
+        .github-btn:hover { background: #2d3748; transform: translateY(-1px); }
+        .cmp-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.88rem; }
+        .cmp-table th { text-align: left; padding: 0.7rem 0.9rem; background: #f8fafc; color: #1a202c; font-weight: 700; border-bottom: 2px solid #e2e8f0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cmp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid #e2e8f0; color: #475569; }
+        .cmp-table td.ours { font-weight: 700; color: #1b4965; }
+        .cmp-table tr:last-child td { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">kaushik.github.io</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="project-hero-banner">
+        <div class="container">
+            <a href="projects.html" class="back-link">← Back to Projects</a>
+            <h1>Safe Context-Adaptive Navigation for Industrial AMRs</h1>
+            <p class="subtitle">A reinforcement-learning supervisor on top of an MPC + control-barrier-function stack that derives its safe speed and clearance from the map the robot already has - removing the per-site commissioning a warehouse AMR normally needs, with no loss of compliance or throughput.</p>
+            <div class="meta-bar">
+                <span class="meta-tag">Nonlinear MPC</span>
+                <span class="meta-tag">CasADi / IPOPT</span>
+                <span class="meta-tag">Control Barrier Functions</span>
+                <span class="meta-tag">Reinforcement Learning (PPO)</span>
+                <span class="meta-tag">ROS 2 / Gazebo</span>
+                <span class="meta-tag">ISO 3691-4 / 13855</span>
+                <span class="meta-tag">Python / C++</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="demo-block">
+            <h2>Live Demo - The Same Encounter, Two Different Answers</h2>
+            <video class="demo-video" controls autoplay loop muted playsinline poster="assets/projects/amr_card_poster.jpg" preload="metadata">
+                <source src="assets/projects/amr_2d_demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="demo-caption">A hand-commissioned industrial AMR (top) and this work (bottom) run the same 31 m aisle with the same people in it. The same pedestrian is met twice: beside an open cross-aisle it cannot see into, the robot refuses to use the width and slows; in plain aisle with solid racking, it steps 1.12 m aside and carries full speed through. The commissioned machine slows at both - slowing is all a marked speed zone can do.</p>
+        </div>
+    </section>
+
+    <section class="container">
+
+        <div class="content-block">
+            <h2>Overview</h2>
+            <p>An autonomous mobile robot sharing warehouse aisles with people is made safe today by a person: a systems integrator walks the site, measures the machine's braking performance, sizes its safety-scanner fields, and hand-marks a reduced-speed zone at every blind corner and junction on the robot's map. That work is repeated for every building and again after every layout change, and it is the reason a fielded AMR behaves correctly at a corner it cannot see around.</p>
+            <p>This project replaces that step. A PPO-trained reinforcement-learning policy sits above a conventional nonlinear-MPC and control-barrier-function stack and re-tunes two of its parameters - a speed ceiling and a clearance margin - several times a second, deriving the response from the map the robot already carries for localisation. Nothing is marked, surveyed or configured for the site. Measured against the same machine as it is actually commissioned, it matches it on both safety and transport time with zero hand-set site parameters, and it produces context-dependent behaviour that a fixed speed zone cannot express.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Why This Problem</h2>
+            <p>Commissioning is real engineering effort with a real cost: industry sources put solution design and deployment at roughly 30% of equipment spend and 8-14 weeks contract-to-production. Every marked zone also encodes a fixed decision - "slow to 0.79 m/s here" - that cannot adapt to what is actually happening at that spot when the robot arrives.</p>
+            <p>Two obvious framings for this work are both wrong, and knowing why is most of the argument. <strong>"Safer than a commissioned AMR"</strong> is a strawman: a certified machine does not violate the standard - that is the precondition for its deployment, not an achievement to beat. <strong>"Faster"</strong> is mathematically capped: with the same safety-rated scanner on both machines the applied speed is the minimum of the two limits, so parity is the ceiling no policy can exceed. What remains, and what is defended here, is <strong>equivalent compliance and equivalent throughput at zero per-site commissioning</strong> - plus adaptivity a static zone has no way to represent.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Technical Implementation</h2>
+            <h3>Three-Layer Architecture</h3>
+            <div class="pipeline-grid">
+                <div class="pipeline-node">
+                    <div class="node-num">Layer 3</div>
+                    <div class="node-name">RL Supervisor - 2 Hz</div>
+                    <div class="node-desc">PPO policy over a 35-D geometric observation (goal, robot velocity, five nearest tracked people in the robot frame, three map-derived occlusion features). Outputs a speed ceiling and a clearance margin - parameters, never commands.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Layer 2</div>
+                    <div class="node-name">Nonlinear MPC - 10 Hz</div>
+                    <div class="node-desc">Unicycle model, 20-step / 2 s horizon, direct multiple shooting with RK4, hand-formulated in CasADi and solved by IPOPT with warm starting and a fixed problem structure. People enter as smooth exponential barriers, constant-velocity propagated over the horizon.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Layer 1</div>
+                    <div class="node-name">CBF Safety Filter - 10 Hz</div>
+                    <div class="node-desc">Enforces the ISO 13855 stopping-distance condition as a small QP (proxsuite): the robot may close on a person only as fast as it can still brake to a stop within the clear distance, evaluated at latency-predicted geometry and including the person's own approach speed.</div>
+                </div>
+                <div class="pipeline-node">
+                    <div class="node-num">Guards</div>
+                    <div class="node-name">Map-Derived Bounds</div>
+                    <div class="node-desc">A sight-distance floor - never slower than the speed it can stop from inside what it can actually see - and a lateral rule that permits stepping around a person only when the space it would move into is solid, never an unobserved opening.</div>
+                </div>
+            </div>
+
+            <h3>Keeping the Learned Layer Certifiable</h3>
+            <p>The safety filter's constants - hard keep-out, response time, braking rate, robustness inflation and the protective field - are frozen, and the policy's clearance action is clipped so its lower bound equals the hard keep-out. The policy can therefore only make the system more conservative than the filter already demands; it has no channel through which it can weaken the guarantee. A safety argument never has to reason about what the network might output, which is what makes the learned component defensible in a certification context rather than merely well-behaved in testing.</p>
+
+            <h3>Training</h3>
+            <p>Stable-Baselines3 PPO, a 2x256 MLP, eight parallel environments, and a three-stage curriculum across nine warehouse scenarios - blind corners, perpendicular crossings, doorway constrictions, dense halls, corridor pass-bys and free-roam crowds - with social-force pedestrians that react to the robot and domain randomisation over pedestrian speed, braking rate, tracker noise and system latency. The reward penalises how hard the safety filter has to intervene, which teaches the policy to arrange the situation so intervention is not needed: anticipation rather than reaction. Two held-out junction scenarios, never trained on, test generalisation to unseen combinations. The trained policy is exported to ONNX and executed through ONNX Runtime, so deployment needs no deep-learning framework.</p>
+
+            <h3>Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-item"><h4>CasADi</h4><p>Symbolic modelling and automatic differentiation for the NMPC problem</p></div>
+                <div class="tech-item"><h4>IPOPT</h4><p>Interior-point NLP solver on the 10 Hz control loop, warm-started</p></div>
+                <div class="tech-item"><h4>proxsuite</h4><p>Dense QP solver for the control-barrier-function safety filter</p></div>
+                <div class="tech-item"><h4>Stable-Baselines3 PPO</h4><p>Supervisor training over vectorised 2D environments</p></div>
+                <div class="tech-item"><h4>Gymnasium</h4><p>Environment API for the custom navigation task</p></div>
+                <div class="tech-item"><h4>ONNX Runtime</h4><p>Framework-free policy inference in the deployed ROS node</p></div>
+                <div class="tech-item"><h4>ROS 2 Humble</h4><p>The same stack as nodes: MPC, CBF, supervisor, tracker, visualisation</p></div>
+                <div class="tech-item"><h4>Gazebo &amp; RViz</h4><p>Physics simulation of a differential-drive AMR, with live safety-field visualisation</p></div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>Measured Results</h2>
+            <p>One 31 m shared-aisle route, three encounters, six randomised presentations per machine. All arms carry the identical mandatory protective field and the same 1.20 m/s site speed limit, and all are scored against the same strict safety barrier.</p>
+            <div class="results-row">
+                <div class="result-card"><div class="result-value">13 → 0</div><div class="result-label">Site Parameters Configured by Hand</div></div>
+                <div class="result-card"><div class="result-value">32.6 s</div><div class="result-label">vs 32.9 s Commissioned</div></div>
+                <div class="result-card"><div class="result-value">0</div><div class="result-label">Contacts &amp; ISO Violations</div></div>
+                <div class="result-card"><div class="result-value">1.12 m</div><div class="result-label">Lateral Offset Where Space Is Real</div></div>
+                <div class="result-card"><div class="result-value">2 %</div><div class="result-label">Sim-to-Sim Agreement in Gazebo</div></div>
+            </div>
+            <table class="cmp-table">
+                <tr><th>Metric</th><th>Commissioned AMR</th><th>This work</th></tr>
+                <tr><td>Site parameters configured by hand</td><td>13</td><td class="ours">0</td></tr>
+                <tr><td>Mission time (6 randomised runs)</td><td>32.9 s</td><td class="ours">32.6 s</td></tr>
+                <tr><td>ISO stopping-distance violations</td><td>0</td><td class="ours">0</td></tr>
+                <tr><td>Contacts / protective stops</td><td>0 / 0</td><td class="ours">0 / 0</td></tr>
+                <tr><td>Passing a pedestrian, blind escape side</td><td>0.60 m/s, no offset</td><td class="ours">0.58 m/s, no offset</td></tr>
+                <tr><td>Passing a pedestrian, clear escape side</td><td>0.60 m/s, no offset</td><td class="ours">1.20 m/s, 1.12 m offset</td></tr>
+            </table>
+            <img src="assets/projects/amr_summary.png" alt="Measured comparison - commissioned AMR versus the RL-supervised stack" class="summary-img">
+        </div>
+
+        <div class="demo-block">
+            <h2>Validated in 3D - ROS 2, Gazebo and RViz</h2>
+            <video class="demo-video" controls loop muted playsinline poster="assets/projects/amr_gazebo_poster.jpg" preload="metadata">
+                <source src="assets/projects/amr_gazebo_demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="demo-caption">The identical control stack - same ONNX policy, same MPC, same safety filter - driving a physics-simulated differential-drive AMR through the same route, reproducing the 2D result to within 2%. RViz (right) shows the protective field: it scales with the square of speed, so it makes the safety margin legible where a speed difference on camera does not.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Key Learnings</h2>
+            <p>The most valuable design decision was making the learned layer a <em>supervisor</em> rather than a controller. Letting the policy set two bounded parameters of a classical stack - instead of emitting velocity commands - meant the safety guarantee stayed provable, the failure modes stayed inspectable, and the trained artefact stayed small enough to run without a deep-learning framework. It is the difference between a system an engineer can certify and one they can only test.</p>
+            <p>The second insight was that anticipation has to be taught indirectly. Rewarding "safety" directly produces a robot that crawls; rewarding progress alone produces one that relies on the safety filter to rescue it. Penalising <em>how hard the filter has to intervene</em> makes the policy arrange the situation so intervention is unnecessary - which is exactly anticipatory behaviour. The problem also only exists at realistic scale: at small-robot speeds the stopping distance is shorter than every sight line and the filter catches everything, so there is nothing for a supervisor to add. At industrial speed the stopping distance exceeds the corner reveal, and only anticipation can prevent the violation.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>Applications</h2>
+            <ul class="feature-list">
+                <li>Warehouse and intralogistics AMRs deployed without a per-site speed-zone survey</li>
+                <li>Fleets that must be re-validated after every rack move or layout change</li>
+                <li>Any mobile robot where a safety case must remain provable with a learned component in the loop</li>
+                <li>Shared human-robot workspaces where a fixed speed zone is too blunt to be both safe and productive</li>
+                <li>A template for supervisory RL over classical control wherever certification matters</li>
+            </ul>
+        </div>
+
+        <div class="content-block" style="text-align:center;">
+            <h2>Source Code</h2>
+            <p>Full stack: the CasADi/IPOPT NMPC, the control-barrier-function safety filter, the PPO training pipeline and curriculum, the ROS 2 nodes, and the generated Gazebo world - with the measurement gates that every reported number is produced by.</p>
+            <a href="https://github.com/Kaushik-DIY/RL-layered-Safe-Context-Adaptive-Navigation" target="_blank" class="github-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on GitHub
+            </a>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kaushik Mitra Venkat</h3>
+                    <p style="color:#64748b;margin-top:0.5rem;">Robotics Engineer<br>Siegen, Germany</p>
+                    <div class="footer-links" style="margin-top:1rem;"><a href="mailto:kaushikmitra.v@gmail.com">kaushikmitra.v@gmail.com</a></div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <div class="footer-links">
+                        <a href="https://www.linkedin.com/in/kaushikmitra23/" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Kaushik-DIY" target="_blank">GitHub</a>
+                        <a href="https://huggingface.co/Kaushik23" target="_blank">Hugging Face</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2026 Kaushik Mitra Venkat. Built with purpose.</p></div>
+        </div>
+    </footer>
+</body>
+</html>
