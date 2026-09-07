@@ -244,6 +244,64 @@
             background: #f1f5f9;
         }
         
+        /* Recommendations */
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .rec-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border-top: 4px solid #6366f1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rec-header {
+            margin-bottom: 1.1rem;
+            padding-bottom: 1.1rem;
+            border-bottom: 1px solid #eef1f6;
+        }
+
+        .rec-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.25rem;
+        }
+
+        .rec-title {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        .rec-quote {
+            color: #475569;
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.6rem;
+            margin: 0;
+        }
+
+        .rec-quote::before {
+            content: '\201C';
+            position: absolute;
+            left: -0.1rem;
+            top: -0.4rem;
+            font-size: 2.4rem;
+            line-height: 1;
+            color: #6366f1;
+            opacity: 0.35;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
         @media (max-width: 768px) {
             .about-intro {
                 grid-template-columns: 1fr;
@@ -432,6 +490,38 @@
         <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
             <button class="lightbox-close" onclick="closeLightbox()">✕</button>
             <img src="" alt="Certificate" class="lightbox-img" id="lightbox-img">
+        </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section class="section container">
+        <div class="section-header">
+            <div class="section-label">Recommendations</div>
+            <h2>What Others Say</h2>
+        </div>
+
+        <div class="rec-grid">
+
+            <div class="rec-card">
+                <div class="rec-header">
+                    <div class="rec-name">Dr.-Ing. Nasser Gyagenda</div>
+                    <div class="rec-title">Chair of Control and Systems Engineering (Lehrstuhl für Regelungs- und Steuerungstechnik), Department of Electrical Engineering and Computer Science, University of Siegen</div>
+                </div>
+                <p class="rec-quote">
+                    I supervised Kaushik during his thesis, "Design and Implementation of a Modular, Sensor-Agnostic, and Extensible SLAM Framework," in the area of robotic simultaneous localization and mapping. He developed a strong command of the fundamentals — robot localisation, mapping, sensor data processing, and their integration into a complete robotic system — and demonstrated solid analytical and programming skills, implementing and evaluating his approach across datasets, online data streams, a robotic platform, and a full suite of software tools. He showed genuine persistence in addressing technical challenges, was receptive to feedback, and communicated his work clearly in both his written report and his presentation. With a solid foundation in robotics and SLAM, along with the motivation and attitude to keep developing professionally, he would be a responsible and constructive member of any technical team.
+                </p>
+            </div>
+
+            <div class="rec-card">
+                <div class="rec-header">
+                    <div class="rec-name">Dr. S. Varunkumar</div>
+                    <div class="rec-title">Associate Professor, Thermodynamics and Combustion Engineering Laboratory, Department of Mechanical Engineering, Indian Institute of Technology Madras</div>
+                </div>
+                <p class="rec-quote">
+                    Kaushik joined my research group at IIT Madras as part of the team developing a lab-scale blast furnace burner, and impressed me from the outset with his motivation for research and his technical drive. When the postdoctoral researcher leading the project left, he rose to the occasion and took charge of the development, carrying the team through to the successful completion and demonstration of the burner. Throughout, he has shown perseverance, the initiative to solve complex engineering problems, and the ability to stay positive when faced with challenges. These qualities make him an ideal candidate for any opportunity.
+                </p>
+            </div>
+
         </div>
     </section>
 
